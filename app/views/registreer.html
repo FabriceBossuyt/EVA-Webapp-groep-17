@@ -1,0 +1,52 @@
+<div>
+    <div ng-show="vm.error" class="alert alert-danger">{{vm.error}}</div>
+    <form name="form" ng-submit="vm.register()" role="form" class="form-horizontal">
+        <fieldset>
+            <legend>Registreren</legend>
+
+        <div class="form-group form-inline" ng-class="{ 'has-error': form.firstname.$dirty && form.firstname.$error.required }">
+            <label for="firstname">Voornaam</label>
+            <input type="text" name="firstname" id="Text1" class="form-control" ng-model="vm.user.firstname" required />
+            <span ng-show="form.firstname.$dirty && form.firstname.$error.required" class="help-block">Voornaam is verplicht</span>
+        </div>
+
+        <div class="form-group form-inline" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
+            <label for="lastname">Naam</label>
+            <input type="text" name="lastName" id="Text1" class="form-control" ng-model="vm.user.lastName" required />
+            <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Naam is verplicht</span>
+        </div>
+
+        <div class="form-group form-inline" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required || form.email.$error.email}">
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="Text1" class="form-control" ng-model="vm.user.username" required />
+            <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">E-mail is verplicht</span>
+            <span ng-show="form.email.$dirty && form.email.$error.email" class="help-block">E-mail is niet correct</span>
+        </div>
+
+        <div class="form-group form-inline" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required || form.email.$error.email}">
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="Text1" class="form-control" ng-model="vm.user.username" required />
+            <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">E-mail is verplicht</span>
+            <span ng-show="form.email.$dirty && form.email.$error.email" class="help-block">E-mail is niet correct</span>
+        </div>
+
+        <div class="form-group form-inline" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <label for="password">Wachtwoord</label>
+            <input type="password" name="password" id="Text1" class="form-control" ng-model="vm.user.password" required />
+            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Wachtwoord is verplicht</span>
+        </div>
+
+        <div class="form-group form-inline" ng-class="{ 'has-error': form.passwordconfirm.$dirty && form.passwordconfirm.$error.required || form.passwordconfirm.$error.compareTo}">
+            <label for="passwordconfirm">Bevestiging wachtwoord</label>
+            <input type="password" name="passwordconfirm" id="Text1" class="form-control" ng-model="vm.user.confirmpassword" required compare-to="vm.user.password"/>
+            <span ng-show="form.passwordconfirm.$dirty && form.passwordconfirm.$error.compareTo || form.passwordconfirm.$error.required" class="help-block">Wachtwoorden komen niet overeen</span>
+        </div>
+</fieldset>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Registreer</button>
+            <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <a href="#/login" class="btn btn-link">Annuleer</a>
+        </div>
+    </form>
+</div>
+

@@ -17,25 +17,27 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngMaterial',
-    'lk-google-picker',
     'ngMaterial', 
-    'LocalStorageModule', 
-    'ui.bootstrap'
+    'LocalStorageModule'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
       })
       .when('/login',{
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl',
+        controller: 'LoginCtrl'
+      })
+      .when('/registreer', {
+        templateUrl: 'views/registreer.html',
+        controller: 'RegistreerCtrl'
       })
       .when('/404',{
         templateUrl: '404.html'
       })
       .otherwise({
-        redirectTo: '/404' //kies je zelf, gebruik homepage of 404
+        redirectTo: '/login' //kies je zelf, gebruik homepage of 404
       });
   })

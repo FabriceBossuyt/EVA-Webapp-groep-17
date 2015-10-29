@@ -1,8 +1,8 @@
 'use strict'
 
 angular.module('EVA-Webapp-groep-17')
-.factory('AuthenticationService', ['$http', '$cookieStore', '$q','$rootScope', '$timeout', 'UserService','localStorageService', 
-    function($http, $cookieStore, $q, $rootScope,  $timeout, UserService, localStorageService){
+.factory('AuthenticationService', ['$http', '$cookieStore', '$q','$rootScope', '$timeout', 'localStorageService',
+    function($http, $cookieStore, $q, $rootScope,  $timeout, localStorageService){
 
         var baseUrl = 'http://localhost:8080'
         var service = {}, 
@@ -22,6 +22,7 @@ angular.module('EVA-Webapp-groep-17')
         return service;
 
         function Init() {
+            //var authData;
             var authData = localStorageService.get('authData'),
                 defer = $q.defer();
 
@@ -84,7 +85,7 @@ angular.module('EVA-Webapp-groep-17')
                 _user.email = response.name
 
             }, function(err){
-                console.log('error');
+                console.log(err);
             });
         }
 
@@ -95,7 +96,7 @@ angular.module('EVA-Webapp-groep-17')
 
             return $http({
                 method: 'GET',
-                url: 'http://localhost:8080/api/userinfo', 
+                url: 'http://localhost:8080/api/userInfo', 
                 headers: header
             });
         }

@@ -1,12 +1,11 @@
 'use strict'
 
 angular.module('EVA-Webapp-groep-17')
-.controller('LoginCtrl', ['$location', 'AuthenticationService', 'FlashService', '$scope',
-    function($location, AuthenticationService, FlashService, $scope){ 
+.controller('LoginCtrl', ['$location', 'AuthenticationService', '$scope',
+    function($location, AuthenticationService, $scope){ 
 
-        $scope.login = login;
-
-        function login() {
+        $scope.logIn = function () {
+            //console.log($scope.username $scope.password)
             AuthenticationService.Login($scope.username, $scope.password, function (response, user) {              
                 if (response.error_description === undefined) {
                     var token = response.token_type + ' ' + response.access_token;

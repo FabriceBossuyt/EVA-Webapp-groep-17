@@ -1,17 +1,12 @@
-<html>
-<head>
-  <title>Login</title>
-  <style> .glyphicon-thumbs-up { cursor:pointer } </style>
-</head>
 <body>
-<img src="eva-logo.png" />
+<img src="images/eva-logo.png" />
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
 
       <div class="page-header">
         <h1>Log in</h1>
       </div>
-      <form ng-submit="logIn()"
+      <form name ="form" ng-submit="logIn()" role="form"
         style="margin-top:30px;">
         <h4>Gebruikersnaam</h4>
 
@@ -20,12 +15,10 @@
         </div>
         <h4>Paswoord</h4>
         <div class="form-group">
-          <input type="password" ng-model="paswoord"></input>
+          <input type="password" ng-model="password"></input>
         </div>
         <button type="submit" class="btn btn-primary">Post</button>
-      </form>
-
+      </form> 
     </div>
   </div>
 </body>
-</html>
