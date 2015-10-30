@@ -18,7 +18,8 @@ angular
     'ngTouch',
     'ngMaterial',
     'ngMaterial', 
-    'LocalStorageModule'
+    'LocalStorageModule', 
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -32,7 +33,8 @@ angular
       })
       .when('/registreer', {
         templateUrl: 'views/registreer.html',
-        controller: 'RegistreerCtrl'
+        controller: 'RegistreerCtrl', 
+        controllerAs: 'vm'
       })
       .when('/404',{
         templateUrl: '404.html'
