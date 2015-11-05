@@ -12,8 +12,8 @@ angular.module('EVA-Webapp-groep-17')
    function (AuthenticationService, $scope) {
 
   	var _onUserLoggedIn = function(event, user) {
-                $scope.user = user;
-            };
+      $scope.user = user;
+    };
 
     var _onUserLoggedOut = function() {
                 $scope.user = {};
@@ -22,12 +22,12 @@ angular.module('EVA-Webapp-groep-17')
     var _logout = function() {
          AuthenticationService.logout();    
          $scope.$broadcast('user:loggedOut');
+
             };
 
 
 	AuthenticationService.Init().then(function(user) {
                 if (user.isAuth) {
-                  console.log(user)
                     $scope.$broadcast('user:loggedIn', user);
                 }
             });

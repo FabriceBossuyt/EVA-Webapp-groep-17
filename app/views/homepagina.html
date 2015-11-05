@@ -1,16 +1,11 @@
-<html>
-<head>
-	  <link rel="stylesheet" href="../styles/Homepagina.css">
-	  <title> EVA Challenges</title>
-</head>
 <body>
-	
 	<div id="wrapper">
 		<div id="header">
 
 			<div id="logo">
 				<img src=../images/eva-logo.png  alt ="logo" title="EVA"/>
 			</div>
+
 			<div id="links">
 				<ul>
 					<li><a href="https://www.facebook.com/evavzw" target="_blank"><img src=../images/fb-logo.png alt="facebookpagina" title="eva facebook"/></a></li>
@@ -22,7 +17,7 @@
 		<div id="sidebar">
 			<div id="menu">
 				<ul>
-					<li><h2><a href= "link">Link1</a></h2></li>
+					<li><h2><a href= "link">Challenges</a></h2></li>
 					<li><h2><a href= "link">Link2</a></h2></li>
 					<li><h2><a href= "link">Link3</a></h2></li>
 
@@ -31,21 +26,27 @@
 		</div>
 		<div id="content">
 			<h1>Challenge</h1>
-			<img id = "boom" src=../images/boom/tree-0.png alt="tree" title="tree">
-			<p id="voortgangtekst">je zit aan dag 1 van de 21 dagen, blijven doorgaan!<br><br><br><br><br><br><br><br><button type="submit" class="btn btn-primary">Volgende challenge</button></p>
+			<img id = "boom" ng-src="../images/boom/tree-{{gebruiker.aantalDagen}}.png" alt="tree" title="tree">
+			<p id="voortgangtekst">je zit aan dag {{gebruiker.aantalDagen}} van de 21 dagen, blijven doorgaan!
+			<div class="col-sm-9">
+				<uib-progressbar class="progress-striped active" max="21" value="gebruiker.aantalDagen">
+					<i>{{gebruiker.aantalDagen}}/21</i>
+				</uib-progressbar>
+			</div>
 
-			<h1>Recept van de dag!</h1>
-			<img id = "boom" src=../images/boom/tree-0.png alt="tree" title="tree">
-			<p id="voortgangtekst">heb tijdelijk de foto van de boom gehad, moet dan uit de database komen, hier komt dan de tekst van het recept, bv Verhit de olie in een braadpan en fruit daarin de ui glazig.
-			Voeg de knoflkook en paprika's toe en bak enkele minuten mee. Voeg de tomatenpuree en het chilipoeder toe en bak al omscheppend 2 minuten.
-			Spoel de bonen onder de kraan en voeg ze bij de tomatenpuree en de groenten. Voeg nu de bouillon toe en laat pruttelen tot de groenten gaar zijn. Dat duurt ongeveer een kwartier. Voeg naar smaak harissa en suiker toe.
-			Dien het gerecht op met wraps, stokbrood of rijst en eventueel wat peterselie of koriander.</p> 
+			<h2>{{challenge.titel}}</h2>
+			<p>{{challenge.omschrijving}}</p>
 
+					<!--<button type="submit" class="btn btn-primary">Volgende challenge</button>-->
+			</p>
+			<div ng-click="receptUrl()">
+				<h1>Recept van de dag!</h1>
+				<img id = "boom" ng-src="Http://{{recept.imageUrl}}" alt="tree" title="tree">
+				<h3>{{recept.titel}}</h3>
+				<p id="voortgangtekst">{{recept.omschrijving}}</p> 
+			</div>
 		</div>
 
 	</div>
-
 </body>
 
-
-</html>

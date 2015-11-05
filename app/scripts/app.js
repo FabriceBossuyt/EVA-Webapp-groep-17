@@ -18,13 +18,14 @@ angular
     'ngTouch',
     'ngMaterial',
     'ngMaterial', 
-    'LocalStorageModule'
+    'LocalStorageModule', 
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+        templateUrl: 'views/homepagina.html',
+        controller: 'HomeCtrl'
       })
       .when('/login',{
         templateUrl: 'views/login.html',
