@@ -11,6 +11,7 @@ angular.module('EVA-Webapp-groep-17')
             token: '',
             isAuth: false, 
             role: '', 
+            aantalDagen: ''
         };
 
         service.Init            = Init;
@@ -28,8 +29,8 @@ angular.module('EVA-Webapp-groep-17')
 
             if(authData) {
                 _user.token = authData.token;
-                GetMe().then(function(){
-
+                GetMe().then(function(response){
+                    _user.aantalDagen = response.data.data.aantalDagen;
                 }, function(){
 
                 });
@@ -50,7 +51,7 @@ angular.module('EVA-Webapp-groep-17')
 
             $http({
                 method: 'POST',
-                url: 'http://localhost:8080/oauth/token',
+                url: 'http://localhost:8080/api/oauth/token',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 data: { username: username, password: password, grant_type: 'password',client_id: 'mobileV1', client_secret: 'abc123456'}, 
                 transformRequest: function (obj) {
@@ -82,7 +83,8 @@ angular.module('EVA-Webapp-groep-17')
             _user.token = token;
             GetMe().then(function(response){
                 _user.isAuth = true;
-                _user.email = response.name
+                _user.email = response.data.data.username
+                _user.aantalDagen = response.data.data.aantalDagen
 
             }, function(err){
                 console.log(err);

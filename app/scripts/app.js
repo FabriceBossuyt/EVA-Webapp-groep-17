@@ -24,8 +24,8 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+        templateUrl: 'views/homepagina.html',
+        controller: 'HomeCtrl'
       })
       .when('/login',{
         templateUrl: 'views/login.html',
@@ -35,6 +35,14 @@ angular
         templateUrl: 'views/registreer.html',
         controller: 'RegistreerCtrl', 
         controllerAs: 'vm'
+      })
+      .when('/challenges', {
+        templateUrl: 'views/challenges.html', 
+        controller: 'ChallengeCtrl'
+      })
+      .when('/recepten', {
+        templateUrl: 'views/recepten.html', 
+        controller: 'ReceptCtrl'
       })
       .when('/404',{
         templateUrl: '404.html'
