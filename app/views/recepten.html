@@ -18,7 +18,7 @@
 			<div id="menu">
 				<ul>
 					<li><h2><a ng-href= "#/challenges">Challenges</a></h2></li>
-					<li><h2><a href= "link">Link2</a></h2></li>
+					<li><h2><a ng-href= "#/recepten">Recepten</a></h2></li>
 					<li><h2><a href= "link">Link3</a></h2></li>
 
 				</ul>
@@ -26,11 +26,12 @@
 		</div>
 		<div id="content">
 			<ul>
-				<li ng-repeat= "challenge in challenges">
-				<h1>{{challenge.titel}}</h1>
-				<p>{{challenge.omschrijving}}</p>
-				<p>Moeilijkheidsgraad: {{challenge.moeilijkheid}}
-				</p>
+				<li ng-repeat= "recept in recepten">
+					<div ng-click="receptUrl()">
+						<img id = "boom" ng-src="Http://{{recept.imageUrl}}" alt="receptImg" ng-title= "{{recept.titel}}">
+						<h3>{{recept.titel}}</h3>
+						<p id="voortgangtekst">{{recept.omschrijving}}</p> 
+					</div>
 				</li>
 			</ul>
 		</div>

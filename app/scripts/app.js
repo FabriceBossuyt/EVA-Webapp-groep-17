@@ -35,6 +35,14 @@ angular
         templateUrl: 'views/registreer.html',
         controller: 'RegistreerCtrl'
       })
+      .when('/challenges', {
+        templateUrl: 'views/challenges.html', 
+        controller: 'ChallengeCtrl'
+      })
+      .when('/recepten', {
+        templateUrl: 'views/recepten.html', 
+        controller: 'ReceptCtrl'
+      })
       .when('/404',{
         templateUrl: '404.html'
       })
