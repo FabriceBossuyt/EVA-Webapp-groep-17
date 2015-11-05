@@ -47,10 +47,17 @@
 					<!--<button type="submit" class="btn btn-primary">Volgende challenge</button>-->
 			</p>
 			<div ng-click="receptUrl()">
-				<h1>Recept van de dag!</h1>
-				<img id = "boom" ng-src="Http://{{recept.imageUrl}}" alt="tree" title="tree">
-				<h3>{{recept.titel}}</h3>
-				<p id="voortgangtekst">{{recept.omschrijving}}</p> 
+			<h1>Recept van de dag!</h1>
+				<md-content class="md-padding">
+    				<md-card>
+      					<img ng-src="Http://{{recept.imageUrl}}" class="md-card-image" alt="{{recept.titel}}">
+      					<md-card-content>
+        				<p>
+          					{{recept.omschrijving}}
+        				</p>
+      					</md-card-content>
+    				</md-card>
+    			</md-content>
 			</div>
 		</div>
 
