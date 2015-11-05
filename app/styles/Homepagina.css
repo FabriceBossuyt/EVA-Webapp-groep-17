@@ -72,16 +72,12 @@ body {
 
 
 }
-h1 {
+#content h1 {
 	text-align: center;
 	padding: 5px;
-	border-bottom:  1px solid #7C7063;
+	
 }
-h4 {
-	text-align: center;
-	padding: 5px;
 
-}
 
 #voortgangtekst{
 	text-align: center;
