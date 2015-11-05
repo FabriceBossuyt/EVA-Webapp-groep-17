@@ -12,7 +12,9 @@ angular.module('EVA-Webapp-groep-17')
                     AuthenticationService.SetCredentials(token);
                     window.history.back();
                     $scope.$emit('user:loggedIn', user);
-                } else {                  
+                    $location.path('/home');
+                }  
+                else{           
                 }
             });
         };
