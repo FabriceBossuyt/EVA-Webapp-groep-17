@@ -8,9 +8,10 @@ angular.module('EVA-Webapp-groep-17')
                 if (response.error_description === undefined) {
                     var token = response.token_type + ' ' + response.access_token;
                     AuthenticationService.SetCredentials(token);
-                    window.history.back();
                     $scope.$emit('user:loggedIn', user);
-                } else {                  
+                    $location.path('/home');
+                }  
+                else{           
                 }
             });
         };
