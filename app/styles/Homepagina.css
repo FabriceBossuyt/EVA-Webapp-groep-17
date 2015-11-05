@@ -94,6 +94,23 @@ h1 {
 	height: 55px;
 	width: 55px;
 }
+#navbar ul li{
+	float:left;
+	list-style: none;
+	padding-left: 10px;
+	color: #4E4f3E;
+
+
+}
+#navbar ul li a{
+	color: #4E4f3E;
+	text-decoration: none;
+	padding: 10px 0px;	
+}
+#navbar ul li a:hover{
+	color: #fff;
+
+}
 
 
 
