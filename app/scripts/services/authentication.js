@@ -14,11 +14,11 @@ angular.module('EVA-Webapp-groep-17')
             aantalDagen: ''
         };
 
-        service.Init            = Init;
-        service.Login           = Login;
-        service.SetCredentials  = SetCredentials;
-        service.logout          = _logout; 
-        service.GetMe           = GetMe;
+        service.Init             = Init;
+        service.Login            = Login;
+        service.SetCredentials   = SetCredentials;
+        service.logout           = _logout; 
+        service.GetMe            = GetMe;
  
         return service;
 
@@ -42,7 +42,8 @@ angular.module('EVA-Webapp-groep-17')
             }
 
             return defer.promise;
-        };     
+        };  
+         
  
         function Login(username, password, callback) {
               var headers={};
@@ -54,6 +55,28 @@ angular.module('EVA-Webapp-groep-17')
                 url: 'http://localhost:8080/api/oauth/token',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 data: { username: username, password: password, grant_type: 'password',client_id: 'mobileV1', client_secret: 'abc123456'}, 
+                transformRequest: function (obj) {
+                                    var str = [];
+                                    for (var p in obj)
+                                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                                    return str.join("&");
+            }}).success(function(response) {
+                callback(response, _user);
+            }).error(function(response){
+                callback(response);
+            });
+        }
+
+        function LoginFacebook(accesstoken){
+            var headers={};
+
+            headers['Content-Type'] = 'application/x-www-form-urlencoded';
+
+            $http({
+                method: 'POST',
+                url: 'http://localhost:8080/oauth/token',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                data: { token: accesstoken, grant_type: 'facebook', client_id: 'mobileV1', client_secret: 'abc123456'}, 
                 transformRequest: function (obj) {
                                     var str = [];
                                     for (var p in obj)

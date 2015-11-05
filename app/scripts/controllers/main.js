@@ -8,8 +8,10 @@
  * Controller of the angularZomer2015App
  */
 angular.module('EVA-Webapp-groep-17')
-  .controller('MainCtrl', ['AuthenticationService', '$scope', 
-   function (AuthenticationService, $scope) {
+  .controller('MainCtrl', ['AuthenticationService', '$scope', '$window',
+   function (AuthenticationService, $scope, $window) {
+
+
 
   	var _onUserLoggedIn = function(event, user) {
       $scope.user = user;
