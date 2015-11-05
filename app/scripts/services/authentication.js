@@ -13,11 +13,12 @@ angular.module('EVA-Webapp-groep-17')
             role: '', 
         };
 
-        service.Init            = Init;
-        service.Login           = Login;
-        service.SetCredentials  = SetCredentials;
-        service.logout          = _logout; 
-        service.GetMe           = GetMe;
+        service.Init             = Init;
+        service.Login            = Login;
+        service.SetCredentials   = SetCredentials;
+        service.logout           = _logout; 
+        service.GetMe            = GetMe;
+        service.watchLoginChange = watchLoginChange;
  
         return service;
 
@@ -41,7 +42,53 @@ angular.module('EVA-Webapp-groep-17')
             }
 
             return defer.promise;
-        };     
+        };  
+
+        function watchLoginChange(){
+
+            FB.Event.subscribe('auth.authResponseChange', function(res){
+                if (res.status === 'connected') {
+                getUserInfo();
+                } 
+                else {
+                }
+            });
+        }
+
+        function getUserInfo() {
+
+  var _self = this;
+
+  FB.api('/me', function(res) {
+
+    $rootScope.$apply(function() { 
+        console.log(res)
+      //$rootScope.user = _self.user = res; 
+
+    });
+
+  });
+
+}
+
+logout = function() {
+
+  var _self = this;
+
+  FB.logout(function(response) {
+
+    $rootScope.$apply(function() { 
+
+      //$rootScope.user = _self.user = {}; 
+
+    }); 
+
+  });
+
+}
+
+            
+           
  
         function Login(username, password, callback) {
               var headers={};
@@ -53,6 +100,28 @@ angular.module('EVA-Webapp-groep-17')
                 url: 'http://localhost:8080/oauth/token',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 data: { username: username, password: password, grant_type: 'password',client_id: 'mobileV1', client_secret: 'abc123456'}, 
+                transformRequest: function (obj) {
+                                    var str = [];
+                                    for (var p in obj)
+                                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                                    return str.join("&");
+            }}).success(function(response) {
+                callback(response, _user);
+            }).error(function(response){
+                callback(response);
+            });
+        }
+
+        function LoginFacebook(accesstoken){
+            var headers={};
+
+            headers['Content-Type'] = 'application/x-www-form-urlencoded';
+
+            $http({
+                method: 'POST',
+                url: 'http://localhost:8080/oauth/token',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                data: { token: accesstoken, grant_type: 'facebook', client_id: 'mobileV1', client_secret: 'abc123456'}, 
                 transformRequest: function (obj) {
                                     var str = [];
                                     for (var p in obj)

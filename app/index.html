@@ -15,6 +15,24 @@
     
   </head>
   <body ng-app="EVA-Webapp-groep-17" ng-controller= "MainCtrl">
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1519833821647286',
+      xfbml      : true,
+      version    : 'v2.4'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
    <div class="header">
       <div class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
@@ -38,7 +56,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li><a ng-hide="user.isAuth" ng-href="#/registreer" aria-label="Registreren">Registreer</a></li>
               <li><a ng-hide="user.isAuth" ng-href="#/login" aria-label="Inloggen">Login</a></li>
-              <li><a ng-click="logout()" aria-label="Uitloggen">Log uit</a></li>
+              <li><a ng-hide="!user.isAuth"ng-click="logout()" aria-label="Uitloggen">Log uit</a></li>
             </ul>
           </div>
         </div>

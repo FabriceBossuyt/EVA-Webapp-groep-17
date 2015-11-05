@@ -3,7 +3,6 @@
 angular.module('EVA-Webapp-groep-17')
 .controller('LoginCtrl', ['$location', 'AuthenticationService', '$scope',
     function($location, AuthenticationService, $scope){ 
-
         $scope.logIn = function () {
             AuthenticationService.Login($scope.username, $scope.password, function (response, user) {              
                 if (response.error_description === undefined) {
