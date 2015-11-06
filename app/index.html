@@ -14,11 +14,37 @@
 
     
   </head>
-  <body ng-app="EVA-Webapp-groep-17" ng-controller= "MainCtrl">
-
+<body ng-app="EVA-Webapp-groep-17" ng-controller= "MainCtrl">
+<div id="wrapper">
+    <div id="header">
+       <div id="logo">
+            <a href="http://www.evavzw.be/" target="_blank"><img src=../images/eva-logo.png alt="evasite" title="eva site"/></a>
+        </div>
+        <div id="navbar">
+            <ul>
+                <li><a ng-href= "#/home">Settings</a></li>
+                <li><a ng-href= "#/login">uitloggen</a></li>
+            </ul>
+        </div>
+        <div id="links">
+            <ul>
+                <li><a href="https://www.facebook.com/evavzw" target="_blank"><img src=../images/fb-logo.png alt="facebookpagina" title="eva facebook"/></a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="sidebar">
+        <div id="menu">
+            <ul class="nav">
+                <li><h2><a ng-href= "#/home">Home</a></h2></li>
+                <li><h2><a ng-href= "#/challenges">Challenges</a></h2></li>
+                <li><h2><a ng-href= "#/recepten">Recepten</a></h2></li>
+            </ul>
+        </div>
+    </div>
     <div>
       <div ng-view=""></div>
     </div>
+</div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->

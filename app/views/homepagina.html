@@ -1,35 +1,5 @@
-<body>
-	<div id="wrapper">
-		<div id="header">
-
-			<div id="logo">
-				<a href="http://www.evavzw.be/" target="_blank"><img src=../images/eva-logo.png alt="evasite" title="eva site"/></a>
-			</div>
-			<div id="navbar">
-			<ul>
-				<li><a href= "link">Settings</a></li>
-				<li><a href= "link">uitloggen</a></li>
-			</ul>
-			</div>
-
-
-			<div id="links">
-				<ul>
-					<li><a href="https://www.facebook.com/evavzw" target="_blank"><img src=../images/fb-logo.png alt="facebookpagina" title="eva facebook"/></a></li>
-				</ul>
-			</div>
-
-		</div>
-		<div id="sidebar">
-			<div id="menu">
-				<ul class="nav">
-					<li><h2><a ng-href= "#/home">Home</a></h2></li>
-					<li><h2><a ng-href= "#/challenges">Challenges</a></h2></li>
-					<li><h2><a ng-href= "#/recepten">Recepten</a></h2></li>
-				</ul>
-			</div>
-		</div>
 		<div id="content">
+
 			<h1>Challenge</h1>
 			<img id = "boom" ng-src="../images/boom/tree-{{gebruiker.aantalDagen}}.png" alt="tree" title="tree">
 			<p id="voortgangtekst">je zit aan dag {{gebruiker.aantalDagen}} van de 21 dagen, blijven doorgaan!
@@ -44,14 +14,15 @@
 
 					<!--<button type="submit" class="btn btn-primary">Volgende challenge</button>-->
 			</p>
-			<div ng-click="receptUrl()">
+			<div id="recept" ng-click="receptUrl()" >
 				<h1>Recept van de dag!</h1>
-				<img id = "receptImg" ng-src="Http://{{recept.imageUrl}}" alt="tree" title="tree">
-				<h3>{{recept.titel}}</h3>
-				<p id="voortgangtekst">{{recept.omschrijving}}</p> 
+				<div ng-style="{'background-image': 'url({{recept.imageUrl}})}'">
+					<h3>{{recept.titel}}</h3>
+					<p id="voortgangtekst">{{recept.omschrijving}}</p>
+				</div>
+				 
 			</div>
+			
 		</div>
 
-	</div>
-</body>
 
