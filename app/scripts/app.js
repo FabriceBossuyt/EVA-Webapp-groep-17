@@ -17,41 +17,46 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngMaterial',
-    'ngMaterial', 
-    'LocalStorageModule', 
-    'ui.bootstrap'
+    'ngMaterial',
+    'LocalStorageModule',
+    'ui.bootstrap',
+    'angularModalService'
   ])
   .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
-      })
-      .when('/home', {
-        templateUrl: 'views/homepagina.html', 
-        controller: 'HomeCtrl'
-      })
-      .when('/login',{
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
-      })
-      .when('/registreer', {
-        templateUrl: 'views/registreer.html',
-        controller: 'RegistreerCtrl', 
-        controllerAs: 'vm'
-      })
-      .when('/challenges', {
-        templateUrl: 'views/challenges.html', 
-        controller: 'ChallengeCtrl'
-      })
-      .when('/recepten', {
-        templateUrl: 'views/recepten.html', 
-        controller: 'ReceptCtrl'
-      })
-      .when('/404',{
-        templateUrl: '404.html'
-      })
-      .otherwise({
-        redirectTo: '/login' //kies je zelf, gebruik homepage of 404
-      });
+      $routeProvider
+        .when('/', {
+            templateUrl: 'views/homepagina.html',
+            controller: 'HomeCtrl'
+        })
+        .when('/home', {
+            templateUrl: 'views/homepagina.html',
+            controller: 'HomeCtrl'
+        })
+        .when('/login', {
+            templateUrl: 'views/login.html',
+            controller: 'LoginCtrl'
+        })
+        .when('/registreer', {
+            templateUrl: 'views/registreer.html',
+            controller: 'RegistreerCtrl',
+            controllerAs: 'vm'
+        })
+        .when('/challenges', {
+            templateUrl: 'views/challenges.html',
+            controller: 'ChallengeCtrl'
+        })
+        .when('/recepten', {
+            templateUrl: 'views/recepten.html',
+            controller: 'ReceptCtrl'
+        })
+          .when('/register', {
+              templateurl: 'views/registreerfb.html',
+              controller: 'RegistreerCtrl'
+          })
+        .when('/404', {
+            templateUrl: '404.html'
+        })
+        .otherwise({
+            redirectTo: '/login' //kies je zelf, gebruik homepage of 404
+        });
   })

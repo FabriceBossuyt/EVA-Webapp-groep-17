@@ -1,42 +1,39 @@
-<body>
-  <div id="wrapper">
-    <div id="header">
-
-      <div id="logo">
-        <img src=../images/eva-logo.png  alt ="logo" title="EVA"/>
-      </div>
-      <div id="navbar">
-      <ul>
-        <li><a href= "link">Settings</a></li>
-        <li><a href= "link">registreer</a></li>
-      </ul>
-      </div>
-
-
-      <div id="links">
-        <ul>
-          <li><a href="https://www.facebook.com/evavzw" target="_blank"><img src=../images/fb-logo.png alt="facebookpagina" title="eva facebook"/></a></li>
-          <li><a href="http://www.evavzw.be/" target="_blank"><img src=../images/eva-logo.png alt="evasite" title="eva site"/></a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 col-md-offset-2">
-        <div class="page-header">
-          <h1>Log in</h1>
+<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content modalLogin">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Log in</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p> Log in met uw gebruikersnaam en wachtwoord</p>
+                        <form name="form" ng-submit="logIn()" role="form">
+                            <h4>Gebruikersnaam</h4>
+                            <div class="form-group inputColor">
+                                <input type="text" ng-model="username" />
+                            </div>
+                            <h4>Wachtwoord</h4>
+                            <div class="form-group inputColor">
+                                <input type="password" ng-model="password" />
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <p>Log in via facebook</p>
+                        <div class="fb-login-button" data-scope="email, user_friends" data-max-rows="1" data-size="medium" data-show-faces="true" data-auto-logout-link="true"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Heeft u nog geen account en wenst u niet in te loggen via facebook?</p>
+                        <p>Registreer u dan nu!</p>
+                        <a ng-href="#/registreer"><button class="btn btn-primary">Registreer</button></a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <form name ="form" ng-submit="logIn()" role="form">
-          <h4>Gebruikersnaam</h4>
-          <div class="form-group">
-            <input type="text" ng-model="username"></input>
-          </div>
-          <h4>Paswoord</h4>
-          <div class="form-group">
-            <input type="password" ng-model="password"></input>
-          </div>
-          <button type="submit" class="btn btn-primary">Login</button>
-        </form> 
-      </div>
     </div>
-  </div>
-</body>
+</div>
