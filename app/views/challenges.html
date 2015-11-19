@@ -1,40 +1,13 @@
-<body>
-	<div id="wrapper">
-		<div id="header">
+<div id="content">
+    <ul>
+        <li ng-repeat="challenge in challenges">
+            <h1>{{challenge.titel}}</h1>
+            <p>{{challenge.omschrijving}}</p>
+            <p>
+                Moeilijkheidsgraad: {{challenge.moeilijkheid}}
+            </p>
+        </li>
+    </ul>
+</div>
 
-			<div id="logo">
-				<img src=../images/eva-logo.png  alt ="logo" title="EVA"/>
-			</div>
-
-			<div id="links">
-				<ul>
-					<li><a href="https://www.facebook.com/evavzw" target="_blank"><img src=../images/fb-logo.png alt="facebookpagina" title="eva facebook"/></a></li>
-					<li><a href="http://www.evavzw.be/" target="_blank"><img src=../images/eva-logo.png alt="evasite" title="eva site"/></a></li>
-				</ul>
-			</div>
-
-		</div>
-		<div id="sidebar">
-			<div id="menu">
-				<ul>
-					<li><h2><a ng-href= "#/challenges">Challenges</a></h2></li>
-					<li><h2><a href= "link">Link2</a></h2></li>
-					<li><h2><a href= "link">Link3</a></h2></li>
-
-				</ul>
-			</div>
-		</div>
-		<div id="content">
-			<ul>
-				<li ng-repeat= "challenge in challenges">
-				<h1>{{challenge.titel}}</h1>
-				<p>{{challenge.omschrijving}}</p>
-				<p>Moeilijkheidsgraad: {{challenge.moeilijkheid}}
-				</p>
-				</li>
-			</ul>
-		</div>
-
-	</div>
-</body>
 

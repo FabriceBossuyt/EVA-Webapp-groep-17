@@ -1,29 +1,57 @@
-<!doctype html>
+﻿<!doctype html>
 <html class="no-js" lang="">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>EVA Webapp groep 17</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/images/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="styles/homepagina.css">
-    <script src="/bower_components/modernizr/modernizr.js"></script>
 
-    
-  </head>
-  <body ng-app="EVA-Webapp-groep-17" ng-controller= "MainCtrl">
 
-    <div>
-      <div ng-view=""></div>
+</head>
+<body ng-app="EVA-Webapp-groep-17" ng-controller="MainCtrl">
+    <div id="wrapper">
+        <div id="header">
+
+            <div id="logo">
+                <a href="http://www.evavzw.be/" target="_blank"><img src=../images/eva-logo.png alt="evasite" title="eva site" /></a>
+            </div>
+            <div id="navbar">
+                <ul>
+                    <li><a href="link">Settings</a></li>
+                    <li ng-click="logout()" ng-show="user.isAuth">Uitloggen</li>
+                    <li ng-click="logout()" ng-hide="user.isAuth">Inloggen</li>
+                </ul>
+            </div>
+
+            <div id="links">
+                <ul>
+                    <li><a href="https://www.facebook.com/evavzw" target="_blank"><img src=../images/fb-logo.png alt="facebookpagina" title="eva facebook" /></a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div id="sidebar">
+            <div id="menu">
+                <ul class="nav">
+                    <li><h2><a ng-href="#/home">Home</a></h2></li>
+                    <li><h2><a ng-href="#/challenges">Challenges</a></h2></li>
+                    <li><h2><a ng-href="#/recepten">Recepten</a></h2></li>
+                </ul>
+            </div>
+        </div>
+        <div ng-view=""></div>
     </div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/bower_components/angular-animate/angular-animate.js"></script>
     <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.js"></script>
@@ -35,9 +63,10 @@
     <script src="/bower_components/angular-google-picker/dist/google-picker.js"></script>
     <script src="/bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/bower_components/angular-modal-service/dst/angular-modal-service.js"></script>
+    <script src="/bower_components/angular-easyfb/build/angular-easyfb.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
     <!-- build:js scripts/main.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
@@ -52,8 +81,6 @@
     <script src="scripts/services/challenge.js"></script>
     <script src="scripts/controllers/challenge.js"></script>
     <script src="scripts/controllers/recept.js"></script>
-
-
     <!-- endbuild -->
-  </body>
+</body>
 </html>
