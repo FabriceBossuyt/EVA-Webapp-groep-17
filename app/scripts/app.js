@@ -20,9 +20,10 @@ angular
     'ngMaterial',
     'LocalStorageModule',
     'ui.bootstrap',
-    'angularModalService'
+    'angularModalService',
+    'ezfb'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, ezfbProvider) {
       $routeProvider
         .when('/', {
             templateUrl: 'views/homepagina.html',
@@ -57,6 +58,6 @@ angular
             templateUrl: '404.html'
         })
         .otherwise({
-            redirectTo: '/login' //kies je zelf, gebruik homepage of 404
+            redirectTo: '/home' //kies je zelf, gebruik homepage of 404
         });
   })

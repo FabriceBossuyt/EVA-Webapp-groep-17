@@ -14,37 +14,6 @@
 
 </head>
 <body ng-app="EVA-Webapp-groep-17" ng-controller="MainCtrl">
-    <script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '1519833821647286',
-                xfbml: true,
-                version: 'v2.4',
-                status: true
-            });
-        };
-        (function (d) {
-            // load the Facebook javascript SDK
-
-            var js,
-            id = 'facebook-jssdk',
-            ref = d.getElementsByTagName('script')[0];
-
-            if (d.getElementById(id)) {
-                return;
-            }
-
-            js = d.createElement('script');
-            js.id = id;
-            js.async = true;
-            js.src = "//connect.facebook.net/nl_BE/all.js";
-
-            ref.parentNode.insertBefore(js, ref);
-
-        }(document));
-    </script>
-    
-
     <div id="wrapper">
         <div id="header">
 
@@ -95,6 +64,7 @@
     <script src="/bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="/bower_components/angular-modal-service/dst/angular-modal-service.js"></script>
+    <script src="/bower_components/angular-easyfb/build/angular-easyfb.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js scripts/main.js -->

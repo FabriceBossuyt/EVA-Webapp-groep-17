@@ -1,0 +1,35 @@
+﻿<form name="form" ng-submit="vm.registreer()" role="form" class="form-horizontal">
+    <fieldset>
+        <legend>Bijkomende info</legend>
+        <div class="form-group form-inline">
+            <label for="student">Student?</label>
+            <input type="checkbox" name="student" id="Text1" class="form-control" ng-model="vm.user.student" required />
+        </div>
+
+        <div class="form-group form-inline" ng-class="{ 'has-error': form.geslacht.$dirty && form.geslacht.$error.required }">
+            <label for="geslacht">Geslacht</label>
+            <div class="btn-group">
+                <label class="btn btn-primary" ng-model="vm.user.geslacht" uib-btn-radio="'Man'">Man</label>
+                <label class="btn btn-primary" ng-model="vm.user.geslacht" uib-btn-radio="'Vrouw'">Vrouw</label>
+            </div>
+        </div>
+
+        <div class="form-group form-inline" ng-class="{ 'has-error': form.vegetarisch.$dirty && form.vegetarisch.$error.required }">
+            <label for="vegetarisch">Vegetarisch?</label>
+            <div class="btn-group">
+                <label class="btn btn-primary" ng-model="vm.user.vegetarisch" uib-btn-radio="'1 x per maand'">1 x per maand</label>
+                <label class="btn btn-primary" ng-model="vm.user.vegetarisch" uib-btn-radio="'Enkele keren per maand'">Enkele keren per maand</label>
+                <label class="btn btn-primary" ng-model="vm.user.vegetarisch" uib-btn-radio="'minder dan 1 x per maand'">Minder dan 1 x per maand</label>
+                <label class="btn btn-primary" ng-model="vm.user.vegetarisch" uib-btn-radio="'Enkele keren per week'">Enkele keren per week</label>
+                <label class="btn btn-primary" ng-model="vm.user.vegetarisch" uib-btn-radio="'1 x per week'">1 x per week</label>
+                <label class="btn btn-primary" ng-model="vm.user.vegetarisch" uib-btn-radio="'Dagelijks'">Dagelijks</label>
+                <label class="btn btn-primary" ng-model="vm.user.vegetarisch" uib-btn-radio="'Vegetarisch?'">Vegetarisch?</label>
+            </div>
+        </div>
+    </fieldset>
+    <div class="form-actions">
+        <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Registreer</button>
+        <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        <a href="#/login" class="btn btn-link">Annuleer</a>
+    </div>
+</form>

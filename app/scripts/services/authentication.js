@@ -15,25 +15,23 @@ angular.module('EVA-Webapp-groep-17')
             refreshToken: ''
         };
 
-        service.Init = Init;
-        service.Login = Login;
-        service.SetCredentials = SetCredentials;
+        service.init = init;
+        service.login = login;
+        service.setCredentials = setCredentials;
         service.logout = _logout;
-        service.GetMe = GetMe;
+        service.getMe = getMe;
         service.watchAuthenticationStatusChange = watchAuthenticationStatusChange;
 
         return service;
 
-
-
-        function Init() {
+        function init() {
 
             //var authData;
             var authData = localStorageService.get('authData'),
                 defer = $q.defer();
             if (authData) {
                 _user.token = authData.token;
-                GetMe().then(function (response) {
+                getMe().then(function (response) {
                     _user.aantalDagen = response.data.data.aantalDagen;
                 }, function () {
 
@@ -41,7 +39,7 @@ angular.module('EVA-Webapp-groep-17')
 
                 _user.isAuth = true;
                 defer.resolve(_user);
-            } else {          
+            } else {
                 defer.reject();
             }
 
@@ -52,8 +50,8 @@ angular.module('EVA-Webapp-groep-17')
             FB.Event.subscribe('auth.authResponseChange', function (res) {
                 console.log(res)
                 if (res.status === 'connected') {
-                   
-                    
+
+
                 }
                 else {
 
@@ -62,7 +60,7 @@ angular.module('EVA-Webapp-groep-17')
             });
         }
 
-        function Login(username, password, callback) {
+        function login(username, password, callback) {
             var headers = {};
 
             headers['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -85,7 +83,7 @@ angular.module('EVA-Webapp-groep-17')
             });
         }
 
-        function LoginFacebook(accesstoken, callback) {
+        function loginFacebook(accesstoken, callback) {
             var headers = {};
 
             headers['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -109,7 +107,6 @@ angular.module('EVA-Webapp-groep-17')
         }
 
         function _logout() {
-            console
             localStorageService.remove('authData');
 
             _user.token = '';
@@ -118,13 +115,13 @@ angular.module('EVA-Webapp-groep-17')
 
 
 
-        function SetCredentials(token) {
+        function setCredentials(token) {
             localStorageService.set('authData', {
                 token: token
             });
 
             _user.token = token;
-            GetMe().then(function (response) {
+            getMe().then(function (response) {
                 _user.isAuth = true;
                 _user.email = response.data.data.username
                 _user.aantalDagen = response.data.data.aantalDagen
@@ -134,7 +131,7 @@ angular.module('EVA-Webapp-groep-17')
             });
         }
 
-        function GetMe() {
+        function getMe() {
             var header = {};
             header.Authorization = _user.token;
             header['Content-Type'] = 'application/x-www-form-urlencoded';

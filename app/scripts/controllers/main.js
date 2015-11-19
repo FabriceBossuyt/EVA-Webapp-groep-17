@@ -8,7 +8,7 @@
  * Controller of the angularZomer2015App
  */
 angular.module('EVA-Webapp-groep-17')
-  .controller('MainCtrl', ['AuthenticationService', '$scope', '$window', 'ModalService','$route',
+  .controller('MainCtrl', ['AuthenticationService', '$scope', '$window', 'ModalService', '$route',
    function (AuthenticationService, $scope, $window, ModalService, $route) {
 
        var _onUserLoggedIn = function (event, user) {
@@ -25,7 +25,7 @@ angular.module('EVA-Webapp-groep-17')
            $scope.$broadcast('user:loggedOut');
        };
 
-       AuthenticationService.Init().then(function (user) {
+       AuthenticationService.init().then(function (user) {
            if (user.isAuth) {
                $scope.$broadcast('user:loggedIn', user);
            }
