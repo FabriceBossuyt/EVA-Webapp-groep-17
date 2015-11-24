@@ -24,7 +24,7 @@
                 <ul>
                     <li><a href="link">Settings</a></li>
                     <li ng-click="logout()" ng-show="user.isAuth">Uitloggen</li>
-                    <li ng-click="logout()" ng-hide="user.isAuth">Inloggen</li>
+                    <li ng-hide="user.isAuth"><a ng-href="#/login">Inloggen</a></li>
                 </ul>
             </div>
 
@@ -64,7 +64,6 @@
     <script src="/bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="/bower_components/angular-modal-service/dst/angular-modal-service.js"></script>
-    <script src="/bower_components/angular-easyfb/build/angular-easyfb.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js scripts/main.js -->

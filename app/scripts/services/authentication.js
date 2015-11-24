@@ -20,18 +20,18 @@ angular.module('EVA-Webapp-groep-17')
         service.setCredentials = setCredentials;
         service.logout = _logout;
         service.getMe = getMe;
-        service.watchAuthenticationStatusChange = watchAuthenticationStatusChange;
 
         return service;
 
         function init() {
 
-            //var authData;
             var authData = localStorageService.get('authData'),
                 defer = $q.defer();
             if (authData) {
                 _user.token = authData.token;
-                getMe().then(function (response) {
+                
+                getMe().then(
+                function (response) {
                     _user.aantalDagen = response.data.data.aantalDagen;
                 }, function () {
 
@@ -45,20 +45,6 @@ angular.module('EVA-Webapp-groep-17')
 
             return defer.promise;
         };
-
-        function watchAuthenticationStatusChange() {
-            FB.Event.subscribe('auth.authResponseChange', function (res) {
-                console.log(res)
-                if (res.status === 'connected') {
-
-
-                }
-                else {
-
-                }
-
-            });
-        }
 
         function login(username, password, callback) {
             var headers = {};
