@@ -25,7 +25,6 @@ angular.module('EVA-Webapp-groep-17')
         function create(user, callback) {
             $http.post('http://localhost:8080/api/gebruikers', user)
             .success(function (response) {
-                console.log(response)
                 callback(response);
             }).error(function (response) {
                 callback(response);
