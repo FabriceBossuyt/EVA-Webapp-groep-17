@@ -33,12 +33,10 @@ angular.module('EVA-Webapp-groep-17')
                 getMe().then(
                 function (response) {
                     _user.aantalDagen = response.data.data.aantalDagen;
+                    _user.isAuth = true;
                 }, function () {
-
                 });
-
-                _user.isAuth = true;
-                defer.resolve(_user);
+                defer.resolve(_user)
             } else {
                 defer.reject();
             }

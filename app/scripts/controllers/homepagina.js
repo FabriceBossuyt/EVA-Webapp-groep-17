@@ -1,8 +1,8 @@
 'use strict'
 
 angular.module('EVA-Webapp-groep-17')
-.controller('HomeCtrl', ['$location', '$scope', 'ReceptService', '$window', 'AuthenticationService', 'ChallengeService',
-    function ($location, $scope, ReceptService, $window, AuthenticationService, ChallengeService) {
+.controller('HomeCtrl', ['$location', '$scope', 'ReceptService', '$window', 'AuthenticationService', 'ChallengeService', '$rootScope',
+    function ($location, $scope, ReceptService, $window, AuthenticationService, ChallengeService, $rootScope) {
         $scope.gebruiker = {
             email: '',
             token: '',
@@ -31,5 +31,7 @@ angular.module('EVA-Webapp-groep-17')
             }, function () {
 
             });
+
+        $rootScope.loginRoute = false;
 
     }]);

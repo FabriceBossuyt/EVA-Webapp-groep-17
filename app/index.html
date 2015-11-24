@@ -10,14 +10,13 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="styles/homepagina.css">
-    <script src="/bower_components/modernizr/modernizr.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
    
   </head>
 <body ng-app="EVA-Webapp-groep-17" ng-controller= "MainCtrl">
     <div id="wrapper">
-        <nav class="navbar navbar-inverse">
+        <nav ng-hide="loginRoute"class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -25,17 +24,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>                        
                     </button>
-                <a class="navbar-brand" href="#">Menu</a>
+                    <a href="http://www.evavzw.be/" target="_blank"><img src=../images/eva-logo.png alt="evasite" title="eva site" /></a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Page 2</a></li>
-                        <li><a href="#">Page 3</a></li>
+                        <li class="active"><a href="#/home">Home</a></li>
+                        <li><a href="#/challenges">Challenges</a></li>
+                        <li><a href="#/recepten">Recepten</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li ng-hide="user.isAuth"><a ng-href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li ng-show="user.isAuth" ng-click="logout()"><a ng-href="#/login"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -69,7 +68,6 @@
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/services/authentication.js"></script>
-    <script src="scripts/controllers/nav.js"></script>
     <script src="scripts/controllers/Registreer.js"></script>
     <script src="scripts/services/user.js"></script>
     <script src="scripts/controllers/homepagina.js"></script>

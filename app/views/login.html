@@ -1,39 +1,39 @@
-  <div class="row">
+<div class="row">
     <div class="col-md-2 col-md-offset-1">
 
-      <div class="page-header">
-        <h1>Log in</h1>
-      </div>
-    <div ng-show="error" class="alert alert-danger">{{error}}</div>
-
-      <form name ="form" ng-submit="logIn()" role="form"
-        style="margin-top:30px;">
-        <h4>Gebruikersnaam</h4>
-
-        <div class="form-group">
-          <input type="text" ng-model="username"></input>
+        <div class="page-header">
+            <h1>Log in</h1>
         </div>
-        <h4>Paswoord</h4>
-        <div class="form-group">
-          <input type="password" ng-model="password"></input>
-        </div>
-        <button type="submit" class="btn btn-primary">Post</button>
-      </form> 
-      </div>
+        <div ng-show="error" class="alert alert-danger">{{error}}</div>
+
+        <form name="form" ng-submit="logIn()" role="form"
+              style="margin-top:30px;">
+            <h4>Gebruikersnaam</h4>
+
+            <div class="form-group">
+                <input type="text" ng-model="username"></input>
+            </div>
+            <h4>Paswoord</h4>
+            <div class="form-group">
+                <input type="password" ng-model="password"></input>
+            </div>
+            <button type="submit" class="btn btn-primary">Post</button>
+        </form>
+    </div>
     <div class="col-md-4">
-                        <p>Log in via facebook</p>
-                        <div class="fb-login-button" data-scope="email, user_friends" data-max-rows="1" data-size="medium" data-show-faces="true" data-auto-logout-link="true"></div>
-                    </div>
-  </div>
-    <div class="row">
-                    <div class="col-md-8">
-                        <p>Heeft u nog geen account en wenst u niet in te loggen via facebook?</p>
-                        <p>Registreer u dan nu!</p>
-                        <a ng-href="#/registreer"><button class="btn btn-primary">Registreer</button></a>
-                    </div>
-                </div>  
+        <p>Log in via facebook</p>
+        <div class="fb-login-button" data-scope="email, user_friends" data-max-rows="1" data-size="medium" data-show-faces="true" data-auto-logout-link="true"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <p>Heeft u nog geen account en wenst u niet in te loggen via facebook?</p>
+        <p>Registreer u dan nu!</p>
+        <a ng-href="#/registreer"><button class="btn btn-primary">Registreer</button></a>
+    </div>
+</div>
 
-                <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />              
+<img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
 
-                
+
 

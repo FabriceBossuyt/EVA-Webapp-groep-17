@@ -67,7 +67,9 @@ angular
             appId:'1519833821647286',
             status:true,
             cookie:true,
-            xfbml:true
+            xfbml: true,
+            channel: '../channel.html',
+            version: 'v2.4'
         });
         
         FB.Event.subscribe('auth.statusChange', function(response) {
@@ -75,7 +77,7 @@ angular
         });
     };
 
-    (function (d) {
+        (function (d) {
         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
         if (d.getElementById(id)) {
             return;
@@ -83,7 +85,7 @@ angular
         js = d.createElement('script');
         js.id = id;
         js.async = true;
-        js.src = "//connect.facebook.net/en_US/all.js";
+        js.src = "//connect.facebook.net/nl_BE/sdk.js";
         ref.parentNode.insertBefore(js, ref);
     }(document));
 })
