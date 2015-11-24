@@ -10,42 +10,40 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="styles/homepagina.css">
-
-
-</head>
-<body ng-app="EVA-Webapp-groep-17" ng-controller="MainCtrl">
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+   
+  </head>
+<body ng-app="EVA-Webapp-groep-17" ng-controller= "MainCtrl">
     <div id="wrapper">
-        <div id="header">
-
-            <div id="logo">
-                <a href="http://www.evavzw.be/" target="_blank"><img src=../images/eva-logo.png alt="evasite" title="eva site" /></a>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+                <a class="navbar-brand" href="#">Menu</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Page 2</a></li>
+                        <li><a href="#">Page 3</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                </div>
             </div>
-            <div id="navbar">
-                <ul>
-                    <li><a href="link">Settings</a></li>
-                    <li ng-click="logout()" ng-show="user.isAuth">Uitloggen</li>
-                    <li ng-hide="user.isAuth"><a ng-href="#/login">Inloggen</a></li>
-                </ul>
-            </div>
-
-            <div id="links">
-                <ul>
-                    <li><a href="https://www.facebook.com/evavzw" target="_blank"><img src=../images/fb-logo.png alt="facebookpagina" title="eva facebook" /></a></li>
-                </ul>
-            </div>
-
-        </div>
-        <div id="sidebar">
-            <div id="menu">
-                <ul class="nav">
-                    <li><h2><a ng-href="#/home">Home</a></h2></li>
-                    <li><h2><a ng-href="#/challenges">Challenges</a></h2></li>
-                    <li><h2><a ng-href="#/recepten">Recepten</a></h2></li>
-                </ul>
-            </div>
-        </div>
-        <div ng-view=""></div>
+        </nav>
+    <div>
+      <div ng-view=""></div>
     </div>
+</div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->

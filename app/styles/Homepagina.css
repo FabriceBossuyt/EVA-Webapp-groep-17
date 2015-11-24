@@ -1,9 +1,11 @@
 body {
 	background-image: url(../images/background.png);
+
+
 }
 
 #wrapper{
-	font-family: "Georgia", ge, serif;
+	font-family: "Georgia", Georgia, serif;
 	width: 100%;
 	height: 100%;
 	background-image: url(../images/background.png);
@@ -14,7 +16,6 @@ body {
 #header {
 	width: 100%;
 	height: 100px;
-	border-bottom: 3px solid #7C7063;
 }
 #logo {
 	float: left;
@@ -22,7 +23,6 @@ body {
 
 }
 #sidebar {
-	font-style:"ArtistampMedium";
 	float: left;
 	width : 200px;
 	height: 100%;
@@ -79,7 +79,7 @@ body {
 
 #links{
 	float: right;
-	margin: 20px 30px 0px 0px
+	margin: 40px 20px 20px 20px;
 }
 #links ul li{
 	float:left;
@@ -111,73 +111,17 @@ body {
 ul{
 	list-style-type: none;
 }
+h3{
+	text-align: center;
+}
 #receptImg{
 	float: left;
 	height: 250px;
 	width: 250px;
 	padding: 15px;
-}
-
-.modalLogin{
-    width: 600px;
-    background-image: url(../images/loginbg.png);
-    color: white !important;
-}
-
-.innerModalLogin{
-    width: 99%;
-    margin: 0 auto;
-}
-
-.inputColor{
-    color: black;
-}
-
-
-
-
-
-/*nav {
-	height: 55px;
-
 
 }
-.btn-primary{
-width: 250px;
-height: 55px;
-
+#recept{
+	padding-top: 50px;
 }
 
-nav li a{
-	text-decoration: none;
-	padding: 20px 20px 20px 10px;
-	display: block;
-}
-nav ul{
-margin: 0;
-padding: 0;
-}
-
-
-nav li{
-margin: 5;
-float: left;
-width: 250px;
-}
-
-.boom{
-	float: left;
-	height: 150px;
-	width: 150px;
-
-}
-.uitdaging{
-	float: left;
-	width: 400px;
-	margin: 10 px;
-
-}
-.recept{
-	float:right;
-	width: 600px;
-}*/
