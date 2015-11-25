@@ -16,7 +16,7 @@
   </head>
 <body ng-app="EVA-Webapp-groep-17" ng-controller= "MainCtrl">
     <div id="wrapper">
-        <nav ng-hide="loginRoute"class="navbar navbar-inverse">
+        <nav ng-show="user.isAuth"class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -28,19 +28,19 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#/home">Home</a></li>
-                        <li><a href="#/challenges">Challenges</a></li>
-                        <li><a href="#/recepten">Recepten</a></li>
+                        <li class="active"><a ui-sref="home">Home</a></li>
+                        <li><a ui-sref="challenges">Challenges</a></li>
+                        <li><a ui-sref="recepten">Recepten</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li ng-hide="user.isAuth"><a ng-href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                        <li ng-show="user.isAuth" ng-click="logout()"><a ng-href="#/login"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                        <li ng-hide="user.isAuth"><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li ng-show="user.isAuth" ng-click="logout()"><a ui-sref="login"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     <div>
-      <div ng-view=""></div>
+      <div ui-view></div>
     </div>
 </div>
 
@@ -60,7 +60,7 @@
     <script src="/bower_components/angular-google-picker/dist/google-picker.js"></script>
     <script src="/bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="/bower_components/angular-modal-service/dst/angular-modal-service.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js scripts/main.js -->

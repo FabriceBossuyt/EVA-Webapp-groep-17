@@ -1,8 +1,8 @@
 'use strict'
 
 angular.module('EVA-Webapp-groep-17')
-.controller('LoginCtrl', ['$location', 'AuthenticationService', '$scope', '$rootScope',
-    function ($location, AuthenticationService, $scope, $rootScope) {
+.controller('LoginCtrl', ['AuthenticationService', '$scope', '$state',
+    function ( AuthenticationService, $scope,$state) {
 
         $scope.logIn = function () {
             $scope.dataloading = true;
@@ -12,7 +12,7 @@ angular.module('EVA-Webapp-groep-17')
                         var token = response.token_type + ' ' + response.access_token;
                         AuthenticationService.setCredentials(token);
                         $scope.$emit('user:loggedIn', user);
-                        $location.path('/home');
+                        $state.go('home');
                         $scope.dataloading = false;
                     }
                     else {
@@ -28,20 +28,14 @@ angular.module('EVA-Webapp-groep-17')
                 var token = response.token_type + ' ' + response.access_token;
                 AuthenticationService.setCredentials(token);
                 $scope.$emit('user:loggedIn', user);
-                $location.path('/home');
-            });
-        }
-        
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '1519833821647286',
-                status: true,
-                cookie: true,
-                xfbml: true,
-                channel: '../channel.html',
-                version: 'v2.4'
+                $state.go('home');
             });
         }
 
-        $rootScope.loginRoute = true;
+        $scope.$on('$viewContentLoaded', function () {
+            if(FB)
+            {
+                FB.XFBML.parse();
+            }
+        });
     }]);

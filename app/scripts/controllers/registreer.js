@@ -1,22 +1,23 @@
 'use strict'
 
 angular.module('EVA-Webapp-groep-17')
-.controller('RegistreerCtrl', ['UserService', '$location',
-    function (UserService, $location) {
+.controller('RegistreerCtrl', ['UserService', '$state',
+    function (UserService, $state) {
         var vm = this;
 
         vm.registreer = function () {
             vm.dataLoading = true;
-            
+
             UserService.create(vm.user, function (response) {
                 console.log(response)
                 if (response === 'Gebruiker added') {
                     vm.dataLoading = false;
-                    $location.path('/login');
+                    $state.go('login');
                 } else {
-                    vm.dataLoading = false; 
+                    vm.dataLoading = false;
                     vm.error = response
                 }
             })
         }
+
     }]);

@@ -8,28 +8,31 @@
  * Controller of the angularZomer2015App
  */
 angular.module('EVA-Webapp-groep-17')
-  .controller('MainCtrl', ['AuthenticationService', '$scope', '$window', 'ModalService', '$route', "$location", "$rootScope",
-   function (AuthenticationService, $scope, $window, ModalService, $route, $location, $rootScope) {
+  .controller('MainCtrl', ['AuthenticationService', '$scope', '$state',
+   function (AuthenticationService, $scope, $state) {
 
        var _onUserLoggedIn = function (event, user) {
            $scope.user = user;
-           $location.path('/home');
+           $state.go('home');
        };
 
        var _onUserLoggedOut = function () {
            $scope.user = {};
-           $location.path('/login');
+           $state.go('login');
        };
 
        var _logout = function () {
-           console.log('logged out')
            AuthenticationService.logout();
            $scope.$broadcast('user:loggedOut');
        };
 
+       var _onFbStatusChange = function () {
+           //FB status check
+       }
+
+
        AuthenticationService.init().then(
            function (user) {
-               console.log(user)
                if (user.isAuth) {
                    $scope.$broadcast('user:loggedIn', user);
                }
@@ -37,14 +40,12 @@ angular.module('EVA-Webapp-groep-17')
                    $scope.$broadcast('user:loggedOut');
                }
            }, function () {
-               console.log('why here')
-               $location.path('/login');
+               $state.go('login');
            });
-
-       $rootScope.loginRoute = $location.path() === '/login';
 
        $scope.$on('user:loggedIn', _onUserLoggedIn);
        $scope.$on('user:loggedOut', _onUserLoggedOut);
+       $scope.$on('fb_statusChange', _onFbStatusChange);
        $scope.logout = _logout;
 
    }]);

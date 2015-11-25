@@ -1,8 +1,8 @@
 'use strict'
 
 angular.module('EVA-Webapp-groep-17')
-.factory('AuthenticationService', ['$http', '$cookieStore', '$q', '$rootScope', '$timeout', 'localStorageService',
-    function ($http, $cookieStore, $q, $rootScope, $timeout, localStorageService) {
+.factory('AuthenticationService', ['$http', '$q','localStorageService',
+    function ($http, $q, localStorageService) {
 
         var baseUrl = 'http://localhost:8080'
         var service = {},
@@ -34,9 +34,10 @@ angular.module('EVA-Webapp-groep-17')
                 function (response) {
                     _user.aantalDagen = response.data.data.aantalDagen;
                     _user.isAuth = true;
+                    defer.resolve(_user)
                 }, function () {
+                    defer.reject();
                 });
-                defer.resolve(_user)
             } else {
                 defer.reject();
             }

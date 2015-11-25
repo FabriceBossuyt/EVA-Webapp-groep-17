@@ -13,52 +13,55 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute',
     'ngSanitize',
     'ngTouch',
     'ngMaterial',
     'ngMaterial',
     'LocalStorageModule',
     'ui.bootstrap',
-    'angularModalService'
+    'angularModalService',
+    'ui.router'
   ])
-  .config(function ($routeProvider) {
-      $routeProvider
-        .when('/', {
+  .config(function ($stateProvider, $urlRouterProvider) {
+
+      $urlRouterProvider.otherwise('/home');
+
+      $stateProvider      
+        .state('home', {
+            url: '/home',
             templateUrl: 'views/homepagina.html',
             controller: 'HomeCtrl'
         })
-        .when('/home', {
-            templateUrl: 'views/homepagina.html',
-            controller: 'HomeCtrl'
-        })
-        .when('/login', {
+        .state('login', {
+            url:'/login', 
             templateUrl: 'views/login.html',
             controller: 'LoginCtrl'
         })
-        .when('/registreer', {
+        .state('registreer', {
+            url: '/registreer',
             templateUrl: 'views/registreer.html',
             controller: 'RegistreerCtrl',
             controllerAs: 'vm'
         })
-        .when('/challenges', {
+        .state('challenges', {
+            ur: '/challenges',
             templateUrl: 'views/challenges.html',
             controller: 'ChallengeCtrl'
         })
-        .when('/recepten', {
+        .state('recepten', {
+            url: '/recepten',
             templateUrl: 'views/recepten.html',
             controller: 'ReceptCtrl'
         })
-          .when('/register', {
+          .state('register', {
+              url:'/register',
               templateurl: 'views/registreerfb.html',
               controller: 'RegistreerCtrl'
           })
-        .when('/404', {
+        .state('404', {
+            url: '/404',
             templateUrl: '404.html'
-        })
-        .otherwise({
-            redirectTo: '/home' //kies je zelf, gebruik homepage of 404
-        });
+        })      
   })
 
 .run(function($rootScope){
@@ -71,10 +74,6 @@ angular
             channel: '../channel.html',
             version: 'v2.4'
         });
-        
-        FB.Event.subscribe('auth.statusChange', function(response) {
-            $rootScope.$broadcast("fb_statusChange", {'status': response.status});
-        });
     };
 
         (function (d) {
@@ -85,7 +84,7 @@ angular
         js = d.createElement('script');
         js.id = id;
         js.async = true;
-        js.src = "//connect.facebook.net/nl_BE/sdk.js";
+        js.src = "//connect.facebook.net/nl_BE/all.js";
         ref.parentNode.insertBefore(js, ref);
     }(document));
 })
