@@ -1,8 +1,8 @@
 'use strict'
 
 angular.module('EVA-Webapp-groep-17')
-.factory('UserService', ['$http', 'localStorageService',
-    function ($http, localStorageService) {
+.factory('UserService', ['$http', 
+    function ($http) {
 
         var service = {};
 
