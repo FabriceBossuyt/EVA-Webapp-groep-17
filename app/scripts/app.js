@@ -19,7 +19,6 @@ angular
     'ngMaterial',
     'LocalStorageModule',
     'ui.bootstrap',
-    'angularModalService',
     'ui.router'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
@@ -64,7 +63,7 @@ angular
         })      
   })
 
-.run(function($rootScope){
+.run(function($rootScope, AuthenticationService){
         window.fbAsyncInit = function () {
         FB.init({
             appId:'1519833821647286',
@@ -74,6 +73,7 @@ angular
             channel: '../channel.html',
             version: 'v2.4'
         });
+        AuthenticationService.watchAuthStatusChange();
     };
 
         (function (d) {
@@ -84,7 +84,7 @@ angular
         js = d.createElement('script');
         js.id = id;
         js.async = true;
-        js.src = "//connect.facebook.net/nl_BE/all.js";
+        js.src = "//connect.facebook.net/nl_BE/sdk.js";
         ref.parentNode.insertBefore(js, ref);
     }(document));
 })

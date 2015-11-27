@@ -20,6 +20,7 @@ angular.module('EVA-Webapp-groep-17')
         service.setCredentials = setCredentials;
         service.logout = _logout;
         service.getMe = getMe;
+        service.watchAuthStatusChange = watchAuthStatusChange;
 
         return service;
 
@@ -127,4 +128,17 @@ angular.module('EVA-Webapp-groep-17')
                 headers: header
             });
         }
+
+        function watchAuthStatusChange() {
+            FB.Event.subscribe('auth.authResponseChange', function (res) {
+                switch (res.status) {
+                    case 'connected':
+                        return true;
+                        break;
+                    default: return false; break;
+                }
+            })
+        }
+
+        
     }]);

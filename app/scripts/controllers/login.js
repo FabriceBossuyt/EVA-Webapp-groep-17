@@ -16,7 +16,6 @@ angular.module('EVA-Webapp-groep-17')
                         $scope.dataloading = false;
                     }
                     else {
-                        console.log(response)
                         $scope.error = "Wachtwoord of Gebruikersnaam fout"
                         $scope.dataloading = false;
                     }

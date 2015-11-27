@@ -4,7 +4,8 @@ angular.module('EVA-Webapp-groep-17')
 .factory('UserService', ['$http', 
     function ($http) {
 
-        var service = {};
+        var service = {},
+            basUrl = 'http://localhost:8080/api/';
 
         service.getAll = getAll;
         service.getById = getById;
@@ -23,7 +24,7 @@ angular.module('EVA-Webapp-groep-17')
         }
 
         function create(user, callback) {
-            $http.post('http://localhost:8080/api/gebruikers', user)
+            $http.post(baseUrl + 'gebruikers', user)
             .success(function (response) {
                 callback(response);
             }).error(function (response) {
@@ -33,6 +34,10 @@ angular.module('EVA-Webapp-groep-17')
 
         function createFacebook(user, callback) {
 
+        }
+        
+        function getUserByFacebookId(fbId) {
+            return $http.get(baseUrl + 'gebruikerByFacebookId/' + fbId);
         }
 
         function update(user) {
