@@ -1,4 +1,5 @@
-<div id="content">
+    <div id="content">
+    <div id="challenge">
     <h1>Challenge</h1>
     <img id="boom" ng-src="../images/boom/tree-{{gebruiker.aantalDagen}}.png" alt="tree" title="tree">
     <p id="voortgangtekst">
@@ -14,12 +15,14 @@
 
     <!--<button type="submit" class="btn btn-primary">Volgende challenge</button>-->
     </p>
-    <div ng-click="receptUrl()">
+    </div>
+    <div id ="recept" ng-click="receptUrl()">
         <h1>Recept van de dag!</h1>
         <img id="receptImg" ng-src="http://{{recept.imageUrl}}" alt="tree" title="tree">
         <h3>{{recept.titel}}</h3>
         <p id="voortgangtekst">{{recept.omschrijving}}</p>
     </div>
-</div>
+    </div>
+
 
 
