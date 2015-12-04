@@ -3,13 +3,7 @@
 angular.module('EVA-Webapp-groep-17')
 .controller('HomeCtrl', ['$scope', 'ReceptService', '$window', 'AuthenticationService', 'ChallengeService', 
     function ($scope, ReceptService, $window, AuthenticationService, ChallengeService) {
-        $scope.gebruiker = {
-            email: '',
-            token: '',
-            isAuth: false,
-            role: '',
-            aantalDagen: ''
-        };
+       
 
         ReceptService.getAll().then(function (response) {
             var recepten = response.data.data;
@@ -24,12 +18,5 @@ angular.module('EVA-Webapp-groep-17')
         $scope.receptUrl = function () {
             $window.open('http://' + $scope.recept.receptUrl, '_blank');
         }
-
-        AuthenticationService.getMe().then(
-            function (response) {
-                $scope.gebruiker.aantalDagen = response.data.data.aantalDagen;
-            }, function () {
-
-            });
 
     }]);
