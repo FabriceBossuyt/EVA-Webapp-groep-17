@@ -1,12 +1,12 @@
     <div id="content">
     <div id="challenge">
     <h1>Challenge</h1>
-    <img id="boom" ng-src="../images/boom/tree-{{gebruiker.aantalDagen}}.png" alt="tree" title="tree">
+    <img id="boom" ng-src="../images/boom/tree-{{user.aantalDagen}}.png" alt="tree" title="tree">
     <p id="voortgangtekst">
-        je zit aan dag {{gebruiker.aantalDagen}} van de 21 dagen, blijven doorgaan!
+        je zit aan dag {{user.aantalDagen}} van de 21 dagen, blijven doorgaan!
         <div class="col-sm-9">
             <uib-progressbar class="progress-striped active" max="21" value="gebruiker.aantalDagen">
-                <i>{{gebruiker.aantalDagen}}/21</i>
+                <i>{{user.aantalDagen}}/21</i>
             </uib-progressbar>
         </div>
 
