@@ -1,7 +1,7 @@
-'use strict'
+﻿'use strict'
 
 angular.module('EVA-Webapp-groep-17')
-.controller('RegistreerCtrl', ['UserService', '$state',
+.controller('RegistreerFBCtrl', ['UserService', '$state',
     function (UserService, $state) {
         var vm = this;
 
@@ -12,7 +12,7 @@ angular.module('EVA-Webapp-groep-17')
                 console.log(response)
                 if (response === 'Gebruiker added') {
                     vm.dataLoading = false;
-                    $state.go('register');
+                    $state.go('login');
                 } else {
                     vm.dataLoading = false;
                     vm.error = response

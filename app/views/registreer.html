@@ -14,33 +14,7 @@
             <label for="naam">Naam</label>
             <input type="text" name="naam" id="Text1" class="form-control" ng-model="vm.user.naam" required />
             <span ng-show="form.naam.$dirty && form.naam.$error.required" class="help-block">Naam is verplicht</span>
-        </div>
-
-        <div class="form-group form-inline">
-            <label for="student">Student?</label>
-            <input type="checkbox" name="student" id="Text1" class="form-control" ng-model="vm.user.student" required />
-        </div>
-
-        <div class="form-group form-inline" ng-class="{ 'has-error': form.geslacht.$dirty && form.geslacht.$error.required }">
-            <label for="geslacht">Geslacht</label>
-            <div class="btn-group">
-                <label class="btn btn-primary" ng-model="vm.user.geslacht" uib-btn-radio="'Man'">Man</label>
-                <label class="btn btn-primary" ng-model="vm.user.geslacht" uib-btn-radio="'Vrouw'">Vrouw</label>
-            </div>
-        </div>
-
-        <div class="form-group form-inline" ng-class="{ 'has-error': form.vegetarisch.$dirty && form.vegetarisch.$error.required }">
-            <label for="vegetarisch">Vegetarisch?</label>
-            <div class="btn-group">
-                <label class="btn btn-primary" ng-model="vm.user.vegetarisch" uib-btn-radio="'1 x per maand'">1 x per maand</label>
-                <label class="btn btn-primary" ng-model="vm.user.vegetarisch" uib-btn-radio="'Enkele keren per maand'">Enkele keren per maand</label>
-                <label class="btn btn-primary" ng-model="vm.user.vegetarisch" uib-btn-radio="'minder dan 1 x per maand'">Minder dan 1 x per maand</label>
-                <label class="btn btn-primary" ng-model="vm.user.vegetarisch" uib-btn-radio="'Enkele keren per week'">Enkele keren per week</label>
-                <label class="btn btn-primary" ng-model="vm.user.vegetarisch" uib-btn-radio="'1 x per week'">1 x per week</label>
-                <label class="btn btn-primary" ng-model="vm.user.vegetarisch" uib-btn-radio="'Dagelijks'">Dagelijks</label>
-                <label class="btn btn-primary" ng-model="vm.user.vegetarisch" uib-btn-radio="'Vegetarisch?'">Vegetarisch?</label>
-            </div>
-        </div>        
+        </div> 
 
         <div class="form-group form-inline" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required || form.email.$error.email}">
             <label for="email">E-mail</label>

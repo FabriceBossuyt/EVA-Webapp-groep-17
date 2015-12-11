@@ -2,7 +2,7 @@
 
 angular.module('EVA-Webapp-groep-17')
 .controller('LoginCtrl', ['AuthenticationService', '$scope', '$state', '$rootScope',
-    function ( AuthenticationService, $scope,$state, $rootScope) {
+    function (AuthenticationService, $scope, $state, $rootScope) {
 
         $scope.logIn = function () {
             $scope.dataloading = true;
@@ -20,19 +20,16 @@ angular.module('EVA-Webapp-groep-17')
                     }
                 });
         };
-       
-        //$scope.fbLogin = function () {
-        //    AuthenticationService.fbLogin(res.authResponse.accessToken, function (response, user) {
-        //        var token = response.token_type + ' ' + response.access_token;
-        //        AuthenticationService.setCredentials(token, response.refresh_token);
-        //        $rootScope.$emit('user:loggedIn', user);
-        //        $state.go('home');
-        //    });
-        //}
+
+        window.fbLogin = function () {
+            FB.api('/me',  {fields: 'last_name, first_name, email'}, function (response) {
+                console.log(response)
+            })
+            $state.go('register')
+        }
 
         $scope.$on('$viewContentLoaded', function () {
-            if(FB)
-            {
+            if (FB) {
                 FB.XFBML.parse();
             }
         });

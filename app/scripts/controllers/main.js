@@ -12,19 +12,18 @@ angular.module('EVA-Webapp-groep-17')
    function (AuthenticationService, $scope, $state, $rootScope) {
 
        var _onUserLoggedIn = function (event, user) {
-           console.log(user)
            $rootScope.user = user;
            $state.go('home');
        };
 
        var _onUserLoggedOut = function () {
            $rootScope.user = {};
-           $state.go('login');
+           $state.go('register');
        };
 
        var _logout = function () {
            AuthenticationService.logout();
-           $scope.$broadcast('user:loggedOut');
+           $rootScope.$broadcast('user:loggedOut');
        };
 
        $rootScope.$on('user:loggedIn', _onUserLoggedIn);

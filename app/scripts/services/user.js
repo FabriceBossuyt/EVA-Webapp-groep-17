@@ -5,7 +5,7 @@ angular.module('EVA-Webapp-groep-17')
     function ($http) {
 
         var service = {},
-            basUrl = 'http://localhost:8080/api/';
+            baseUrl = 'http://localhost:8080/api/';
 
         service.getAll = getAll;
         service.getById = getById;

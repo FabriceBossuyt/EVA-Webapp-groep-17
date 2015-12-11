@@ -28,7 +28,6 @@ angular.module('EVA-Webapp-groep-17')
 
         function init() {
             var authData = localStorageService.get('authData');
-            console.log(authData)
 
             if (authData) {
                 _user.token = authData.token;
@@ -66,6 +65,7 @@ angular.module('EVA-Webapp-groep-17')
                         break;
                     default: fbAuth = false; break;
                 }
+                console.log(response)
                 init();
             }, true)
         }
@@ -178,6 +178,10 @@ angular.module('EVA-Webapp-groep-17')
                 url: 'http://localhost:8080/api/userInfo',
                 headers: header
             });
+        }
+
+        function firstFbLogin() {
+
         }
 
     }]);
