@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('EVA-Webapp-groep-17')
-.factory('AuthenticationService', ['$http', '$q', 'localStorageService', '$rootScope', 'UserService', 
+.factory('AuthenticationService', ['$http', '$q', 'localStorageService', '$rootScope', 'UserService',
     function ($http, $q, localStorageService, $rootScope, UserService) {
 
         var baseUrl = 'http://localhost:8080'
@@ -14,7 +14,7 @@ angular.module('EVA-Webapp-groep-17')
             aantalDagen: '',
             refreshToken: ''
         },
-        fbAuth, 
+        fbAuth,
         fbResponse;
 
         service.init = init;
@@ -38,19 +38,15 @@ angular.module('EVA-Webapp-groep-17')
                     _user.isAuth = true;
                     $rootScope.$emit('user:loggedIn', _user);
                 }, function () {
-                    refreshToken(authData.refreshToken, function (response, user) {
-                        var token = response.token_type + ' ' + response.access_token;
-                        setCredentials(token, response.refresh_token)
-                    });
-                    $rootScope.$emit('user:loggedIn', _user);
+                    $rootScope.$emit('user:loggedOut');
                 });
             } else {
                 if (fbAuth) {
                     loginFacebook(fbResponse.accessToken, function (response, user) {
                         var token = response.token_type + ' ' + response.access_token;
-                        setCredentials(token, response.refresh_token)
+                        setCredentials(token, response.refresh_token);
                         $rootScope.$emit('user:loggedIn', _user);
-                    })
+                    });
                 } else {
                     $rootScope.$emit('user:loggedOut');
                 }
@@ -60,37 +56,17 @@ angular.module('EVA-Webapp-groep-17')
         function watchAuthStatusChange() {
             return FB.getLoginStatus(function (response) {
                 switch (response.status) {
-                    case 'connected': fbAuth = true;
+                    case 'connected':
+                        fbAuth = true;
                         fbResponse = response.authResponse;
                         break;
-                    default: fbAuth = false; break;
+                    default:
+                        fbAuth = false;
+                        break;
                 }
-                console.log(response)
+                console.log(response);
                 init();
-            }, true)
-        }
-
-        function refreshToken(token, callback) {
-            var headers = {};
-
-            headers['Content-Type'] = 'application/x-www-form-urlencoded';
-
-            $http({
-                method: 'POST',
-                url: 'http://localhost:8080/api/oauth/token',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                data: { refresh_token: token, grant_type: 'refresh_token', client_id: 'mobileV1', client_secret: 'abc123456' },
-                transformRequest: function (obj) {
-                    var str = [];
-                    for (var p in obj)
-                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-                    return str.join("&");
-                }
-            }).success(function (response) {
-                callback(response, _user);
-            }).error(function (response) {
-                callback(response);
-            });
+            }, true);
         }
 
         function login(username, password, callback) {
@@ -149,13 +125,11 @@ angular.module('EVA-Webapp-groep-17')
         };
 
 
-
         function setCredentials(token, refreshToken) {
             localStorageService.set('authData', {
-                token: token,
-                refreshToken: refreshToken
+                token: token
             });
-            
+
             _user.token = token;
             getMe().then(function (response) {
                 _user.isAuth = true;
@@ -165,7 +139,7 @@ angular.module('EVA-Webapp-groep-17')
             }, function (err) {
                 console.log(err);
             });
-            
+
         }
 
         function getMe() {
@@ -178,10 +152,6 @@ angular.module('EVA-Webapp-groep-17')
                 url: 'http://localhost:8080/api/userInfo',
                 headers: header
             });
-        }
-
-        function firstFbLogin() {
-
         }
 
     }]);

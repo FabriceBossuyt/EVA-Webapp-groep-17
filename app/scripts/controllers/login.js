@@ -1,8 +1,9 @@
 'use strict'
 
 angular.module('EVA-Webapp-groep-17')
-.controller('LoginCtrl', ['AuthenticationService', '$scope', '$state', '$rootScope',
-    function (AuthenticationService, $scope, $state, $rootScope) {
+.controller('LoginCtrl', ['AuthenticationService', '$scope', '$state', '$rootScope', 'UserService', 
+    function (AuthenticationService, $scope, $state, $rootScope, UserService) {
+        var gebruiker;
 
         $scope.logIn = function () {
             $scope.dataloading = true;
@@ -22,10 +23,15 @@ angular.module('EVA-Webapp-groep-17')
         };
 
         window.fbLogin = function () {
-            FB.api('/me',  {fields: 'last_name, first_name, email'}, function (response) {
-                console.log(response)
-            })
-            $state.go('register')
+            FB.api('/me', { fields: 'last_name, first_name, email' }, function (response) {
+                UserService.getGebruikerByfacebookId(response.id).then(function () {
+                    AuthenticationService.watchAuthStatusChange();
+                    $state.go('home');
+                }, function (response) {
+                });
+            });
+
+           
         }
 
         $scope.$on('$viewContentLoaded', function () {

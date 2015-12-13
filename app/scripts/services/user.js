@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('EVA-Webapp-groep-17')
-.factory('UserService', ['$http', 
+.factory('UserService', ['$http',
     function ($http) {
 
         var service = {},
@@ -12,6 +12,7 @@ angular.module('EVA-Webapp-groep-17')
         service.create = create;
         service.update = update;
         service.delete = remove;
+        service.getGebruikerByfacebookId = getUserByFacebookId;
 
         return service;
 
@@ -32,13 +33,9 @@ angular.module('EVA-Webapp-groep-17')
             });
         }
 
-        function createFacebook(user, callback) {
-
-        }
-        
         function getUserByFacebookId(fbId) {
             return $http.get(baseUrl + 'gebruikerByFacebookId/' + fbId);
-        }
+        };
 
         function update(user) {
             return $http.put('/api/gebruikers/' + user.id, user).then(handleSuccess, handleError('Error updating user'));

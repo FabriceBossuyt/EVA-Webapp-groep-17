@@ -18,7 +18,7 @@ angular.module('EVA-Webapp-groep-17')
 
        var _onUserLoggedOut = function () {
            $rootScope.user = {};
-           $state.go('register');
+           $state.go('login');
        };
 
        var _logout = function () {
