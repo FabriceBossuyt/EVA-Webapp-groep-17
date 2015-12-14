@@ -7,7 +7,7 @@ angular.module('EVA-Webapp-groep-17')
             $scope.recepten = response.data.data;
         });
 
-        $scope.receptUrl = function () {
-            $window.open('http://' + $scope.recept.receptUrl, '_blank');
+        $scope.receptUrl = function (recept) {
+            $window.open('http://' + recept.receptUrl, '_blank');
         }
     }]);
