@@ -22,8 +22,8 @@
 
                 <h3>{{challenge.titel}}</h3>
                 <p>{{challenge.omschrijving}}</p>
-                <label class="btn btn-primary" ng-click="voltooiChallenge(challenge)" ng-hide="true">Voltooi deze challenge</label>
-                <a ui-sref="challenges"><label class="btn btn-primary" ng-click="startChallenge" ng-hide="false">Kies een challenge</label></a>
+                <label class="btn btn-primary" ng-click="voltooiChallenge(challenge)" ng-show="active">Voltooi deze challenge</label>
+                <a ui-sref="challenges"><label class="btn btn-primary" ng-click="startChallenge" ng-hide="active">Kies een challenge</label></a>
                 
                 <!--<button type="submit" class="btn btn-primary">Volgende challenge</button>-->
             </div>      

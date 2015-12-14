@@ -9,7 +9,7 @@
             <p ng-hide="true">
                 <img id = "moeilijkheidsgraad" ng-src="../images/gedaan.jpg" alt="moeilijkheid" title="Afbeelding met huidige voortgang">
             </p>
-            <label class="btn btn-primary" ng-click="setActive(challenge)" ng-hide="false">Start deze challenge</label>
+            <label class="btn btn-primary" ng-click="setActive(challenge)" ng-hide={{active}}>Start deze challenge</label>
         </li>
     </ul>
 </div>
