@@ -28,7 +28,6 @@ angular.module('EVA-Webapp-groep-17')
 
         function init() {
             var authData = localStorageService.get('authData');
-
             if (authData) {
                 _user.token = authData.token;
 
@@ -44,7 +43,7 @@ angular.module('EVA-Webapp-groep-17')
                 if (fbAuth) {
                     loginFacebook(fbResponse.accessToken, function (response, user) {
                         var token = response.token_type + ' ' + response.access_token;
-                        setCredentials(token, response.refresh_token);
+                        setCredentials(token);
                         $rootScope.$emit('user:loggedIn', _user);
                     });
                 } else {
@@ -55,6 +54,7 @@ angular.module('EVA-Webapp-groep-17')
 
         function watchAuthStatusChange() {
             return FB.getLoginStatus(function (response) {
+                console.log(response)
                 switch (response.status) {
                     case 'connected':
                         fbAuth = true;
@@ -64,7 +64,6 @@ angular.module('EVA-Webapp-groep-17')
                         fbAuth = false;
                         break;
                 }
-                console.log(response);
                 init();
             }, true);
         }
@@ -116,12 +115,24 @@ angular.module('EVA-Webapp-groep-17')
         }
 
         function _logout() {
-            localStorageService.remove('authData');
+            if (fbAuth) {
+                fbAuth = false;
+                FB.logout(function (response) {
+                    localStorageService.remove('authData');
 
-            _user.token = '';
-            _user.isAuth = false;
+                    _user.token = '';
+                    _user.isAuth = false;
 
-            $rootScope.$emit('user:loggedOut');
+                    $rootScope.$emit('user:loggedOut');
+                });
+            } else {
+                localStorageService.remove('authData');
+
+                _user.token = '';
+                _user.isAuth = false;
+
+                $rootScope.$emit('user:loggedOut');
+            }
         };
 
 

@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('EVA-Webapp-groep-17')
-.controller('LoginCtrl', ['AuthenticationService', '$scope', '$state', '$rootScope', 'UserService', 
+.controller('LoginCtrl', ['AuthenticationService', '$scope', '$state', '$rootScope', 'UserService',
     function (AuthenticationService, $scope, $state, $rootScope, UserService) {
         var gebruiker;
 
@@ -11,7 +11,7 @@ angular.module('EVA-Webapp-groep-17')
                 function (response, user) {
                     if (user) {
                         var token = response.token_type + ' ' + response.access_token;
-                        AuthenticationService.setCredentials(token, response.refresh_token);
+                        AuthenticationService.setCredentials(token);
                         $rootScope.$emit('user:loggedIn', user);
                         $scope.dataloading = false;
                     }
@@ -27,11 +27,12 @@ angular.module('EVA-Webapp-groep-17')
                 UserService.getGebruikerByfacebookId(response.id).then(function () {
                     AuthenticationService.watchAuthStatusChange();
                     $state.go('home');
-                }, function (response) {
+                }, function () {
+                    $state.go('register', { 'user': { 'email': response.email, 'voornaam': response.first_name, 'naam': response.last_name, 'facebookId': response.id, 'password': ' ' } });
                 });
             });
 
-           
+
         }
 
         $scope.$on('$viewContentLoaded', function () {

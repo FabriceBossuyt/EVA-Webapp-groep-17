@@ -13,6 +13,7 @@ angular.module('EVA-Webapp-groep-17')
         service.update = update;
         service.delete = remove;
         service.getGebruikerByfacebookId = getUserByFacebookId;
+        service.getByUsername = getByUsername;
 
         return service;
 
@@ -33,16 +34,20 @@ angular.module('EVA-Webapp-groep-17')
             });
         }
 
+        function getByUsername(username) {
+            return $http.get(baseUrl + 'gebruikerByUsername/' + username)
+        }
+
         function getUserByFacebookId(fbId) {
             return $http.get(baseUrl + 'gebruikerByFacebookId/' + fbId);
         };
 
         function update(user) {
-            return $http.put('/api/gebruikers/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
+            return $http.put(baseUrl + 'gebruikers/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
         }
 
         function remove(id) {
-            return $http.delete('/api/gebruikers/' + id).then(handleSuccess, handleError('Error deleting user'));
+            return $http.delete(baseUrl +  'gebruikers/' + id).then(handleSuccess, handleError('Error deleting user'));
         }
 
         // private functions

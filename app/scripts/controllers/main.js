@@ -23,7 +23,6 @@ angular.module('EVA-Webapp-groep-17')
 
        var _logout = function () {
            AuthenticationService.logout();
-           $rootScope.$broadcast('user:loggedOut');
        };
 
        $rootScope.$on('user:loggedIn', _onUserLoggedIn);

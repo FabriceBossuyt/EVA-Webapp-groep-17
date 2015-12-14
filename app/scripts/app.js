@@ -53,10 +53,11 @@ angular
             controller: 'ReceptCtrl'
         })
         .state('register', {
-              url: '/register',
-              templateUrl: 'views/registreerfb.html',
-              controller: 'RegistreerFBCtrl',
-              controllerAs: 'vm'
+            url: '/register',
+            params: { 'user': null },
+            templateUrl: 'views/registreerfb.html',
+            controller: 'RegistreerFBCtrl',
+            controllerAs: 'vm'
         })
         .state('404', {
             url: '/404',
