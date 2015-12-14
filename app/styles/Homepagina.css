@@ -108,9 +108,7 @@ ul{
 	list-style-type: none;
 }
 
-h3{
-	text-align: center;
-}
+
 
 #receptImg{
 	float: left;
@@ -195,4 +193,8 @@ nav a:hover{
 	text-align: center;
 	color: white;
 
+}
+#moeilijkheidsgraad{
+	width: 25px;
+	height: 25px;
 }
