@@ -183,6 +183,7 @@ nav a:hover{
 	text-align: center;
 	color: white;
 }
+
 .form-group input{
  	-moz-border-radius: 15px;
  	border-radius: 15px;
@@ -190,11 +191,8 @@ nav a:hover{
     padding:5px;
 
 }
-#rheader{
+.rheader{
 	text-align: center;
 	color: white;
 
-}
-#rbody{
-	text-align: center;
 }

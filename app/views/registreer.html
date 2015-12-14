@@ -2,7 +2,7 @@
     <div ng-show="vm.error" class="alert alert-danger">{{vm.error}}</div>
     <form name="form" ng-submit="vm.registreer()" role="form" class="form-horizontal">
         <fieldset>
-            <legend id="rheader">Registreren</legend>
+            <legend class="rheader">Registreren</legend>
     <div class ="row">        
         <div class="form-group form-inline" ng-class="{ 'has-error': form.voornaam.$dirty && form.voornaam.$error.required }">
             <div class="col-md-1 col-md-offset-5">
@@ -51,7 +51,7 @@
             </div>
         </div>
     </div>
-    </div>
+
 </fieldset>
     <div class="row">
         <div class="col-md-3 col-md-offset-5">
