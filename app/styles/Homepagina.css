@@ -116,9 +116,12 @@ h3{
 	float: left;
 	height: 250px;
 	width: 250px;
-	padding: 15px;
-
+	margin: 15px;
+    border-style: solid;
+    border-color: dimgrey;
+    border-width: 2px;
 }
+
 #recept{
 	float: left;
 	height: 450px;
@@ -135,6 +138,11 @@ h3{
 /* Restyling nav */
 .navbar-brand{
     padding: 10px 0px !important;
+}
+
+.navbar-inverse{
+    border-color: dimgrey !important;
+    border-width: 1px !important;
 }
 
 .evaLogo{
