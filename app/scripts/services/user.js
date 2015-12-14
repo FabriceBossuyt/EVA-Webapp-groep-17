@@ -1,8 +1,8 @@
 'use strict'
 
 angular.module('EVA-Webapp-groep-17')
-.factory('UserService', ['$http',
-    function ($http) {
+.factory('UserService', ['$http', 'localStorageService',
+    function ($http, localStorageService) {
 
         var service = {},
             baseUrl = 'http://localhost:8080/api/';
@@ -14,6 +14,7 @@ angular.module('EVA-Webapp-groep-17')
         service.delete = remove;
         service.getGebruikerByfacebookId = getUserByFacebookId;
         service.getByUsername = getByUsername;
+        service.putMe = putMe;
 
         return service;
 
@@ -44,6 +45,26 @@ angular.module('EVA-Webapp-groep-17')
 
         function update(user) {
             return $http.put(baseUrl + 'gebruikers/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
+        }
+
+        function putMe(user) {
+            console.log(user)
+            var header = {};
+            header.Authorization = localStorageService.get('authData').token;
+            header['Content-Type'] = 'application/x-www-form-urlencoded';
+
+            return $http({
+                method: 'PUT',
+                url: baseUrl + 'me/',
+                headers: header,
+                data: user,
+                transformRequest: function (obj) {
+                    var str = [];
+                    for (var p in obj)
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                    return str.join("&");
+                }
+            });
         }
 
         function remove(id) {

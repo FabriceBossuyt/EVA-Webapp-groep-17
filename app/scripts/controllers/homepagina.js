@@ -9,14 +9,9 @@ angular.module('EVA-Webapp-groep-17')
             $scope.recept = recepten[2]
         });
 
-        $scope.loadChallenge = function(challenge){
-            console.log(challenge)
-        }
-
         $rootScope.$watch('user', function () {
             if ($rootScope.user) {
                 ChallengeService.getById($rootScope.user.huidigeChallenge).then(function (response) {
-                    console.log($rootScope.user)
                     $scope.challenge = response.data.data;
                 })
             }
