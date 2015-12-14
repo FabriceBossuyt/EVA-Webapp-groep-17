@@ -3,10 +3,10 @@
         <li ng-repeat="challenge in challenges">
             <h1>{{challenge.titel}}</h1>
             <p>{{challenge.omschrijving}}</p>
-            <p ng-hide="false">
+            <p ng-hide="challengeDone(challenge)">
                 Moeilijkheidsgraad: <img id = "moeilijkheidsgraad" ng-src="../images/moeilijkheid-{{challenge.moeilijkheid}}.jpg" alt="moeilijkheid" title="Afbeelding met huidige voortgang">
             </p>
-            <p ng-hide="true">
+            <p ng-show="challengeDone(challenge)">
                 <img id = "moeilijkheidsgraad" ng-src="../images/gedaan.jpg" alt="moeilijkheid" title="Afbeelding met huidige voortgang">
             </p>
             <label class="btn btn-primary" ng-click="setActive(challenge)" ng-hide="false">Start deze challenge</label>
