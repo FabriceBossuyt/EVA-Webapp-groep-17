@@ -35,6 +35,12 @@ angular.module('EVA-Webapp-groep-17')
                 function (response) {
                     _user.aantalDagen = response.data.data.aantalDagen;
                     _user.isAuth = true;
+                    _user.email = response.data.data.username;
+                    _user.naam = response.data.data.naam;
+                    _user.voornaam = response.data.data.voornaam;
+                    _user.huidigeChallenge = response.data.data.huidigeChallenge;
+                    _user.gedaneChallenges = response.data.data.gedaneChallenges;
+                    _user.aantalChallenges = response.data.data.gedaneChallenges.length;
                     $rootScope.$emit('user:loggedIn', _user);
                 }, function () {
                     $rootScope.$emit('user:loggedOut');
@@ -54,7 +60,6 @@ angular.module('EVA-Webapp-groep-17')
 
         function watchAuthStatusChange() {
             return FB.getLoginStatus(function (response) {
-                console.log(response)
                 switch (response.status) {
                     case 'connected':
                         fbAuth = true;
@@ -122,8 +127,8 @@ angular.module('EVA-Webapp-groep-17')
 
                     _user.token = '';
                     _user.isAuth = false;
-
                     $rootScope.$emit('user:loggedOut');
+
                 });
             } else {
                 localStorageService.remove('authData');
@@ -136,16 +141,21 @@ angular.module('EVA-Webapp-groep-17')
         };
 
 
-        function setCredentials(token, refreshToken) {
+        function setCredentials(token) {
             localStorageService.set('authData', {
                 token: token
             });
 
             _user.token = token;
             getMe().then(function (response) {
+                _user.aantalDagen = response.data.data.aantalDagen;
                 _user.isAuth = true;
-                _user.email = response.data.data.username
-                _user.aantalDagen = response.data.data.aantalDagen
+                _user.email = response.data.data.username;
+                _user.naam = response.data.data.naam;
+                _user.voornaam = response.data.data.voornaam;
+                _user.huidigeChallenge = response.data.data.huidigeChallenge;
+                _user.gedaneChallenges = response.data.data.gedaneChallenges;
+                _user.aantalChallenges = response.data.data.gedaneChallenges.length;
 
             }, function (err) {
                 console.log(err);

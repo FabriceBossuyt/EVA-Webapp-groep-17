@@ -1,29 +1,38 @@
 <div id="content">
-    <div class="row"> 
-        <div class="col-sm-6"> 
-            <div class="thumbnail">
-                <h1>Challenge</h1>
-                <img id="boom" ng-src="../images/boom/tree-{{user.aantalDagen}}.png" alt="tree" title="Afbeelding met huidige voortgang">
-                <div class="caption">
-                    <p>Je zit aan dag {{user.aantalDagen}} van de 21 dagen, blijven doorgaan!</p>
-                        <uib-progressbar class="progress-striped active" max="21" value="gebruiker.aantalDagen">
-                            <i>{{user.aantalDagen}}/21</i>
-                        </uib-progressbar>
-                    <h3>{{challenge.titel}}</h3>
-                    <p>{{challenge.omschrijving}}</p>
-                    <!--<button type="submit" class="btn btn-primary">Volgende challenge</button>-->
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6"> 
-            <div class="thumbnail" ng-click="receptUrl()">
-                <h1>Recept van de dag</h1>
-                <img id="receptImg" ng-src="http://{{recept.imageUrl}}" alt="tree" title="Foto van recept">
-                <div class="caption">
-                    <h3>{{recept.titel}}</h3>
-                    <p>{{recept.omschrijving}}</p>
-                </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Welkom {{user.voornaam}}</h1>
+            <div class="caption">
+                <img id="boom" ng-src="../images/boom/tree-{{user.aantalChallenges}}.png" alt="tree" title="Afbeelding met huidige voortgang">
+                <p>Je bent momenteel {{user.aantalDagen}} dagen bezig aan de vegetarische uitdagingen van Eva en hebt {{user.aantalChallenges}} van de 21 uitdagingen voltooid</p>
+
+                <uib-progressbar class="progress-striped active" max="21" value="user.aantalChallenges">
+                    <i>{{user.aantalChallenges}}/21</i>
+                </uib-progressbar>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="thumbnail">
+                <h1>Challenge</h1>
+
+                <h3>{{challenge.titel}}</h3>
+                <p>{{challenge.omschrijving}}</p>
+                <!--<button type="submit" class="btn btn-primary">Volgende challenge</button>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-5">
+        <div class="thumbnail" ng-click="receptUrl()">
+            <h1>Recept van de dag</h1>
+            <img id="receptImg" ng-src="http://{{recept.imageUrl}}" alt="tree" title="Foto van recept">
+            <div class="caption">
+                <h3>{{recept.titel}}</h3>
+                <h4>{{recept.omschrijving}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
