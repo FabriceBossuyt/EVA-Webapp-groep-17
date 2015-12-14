@@ -1,6 +1,7 @@
 <div id="content">
     <div class="row">
-        <div class="col-md-6">
+        <div id="welkom">
+        
             <h1>Welkom {{user.voornaam}}</h1>
             <div class="caption">
                 <img id="boom" ng-src="../images/boom/tree-{{user.aantalChallenges}}.png" alt="tree" title="Afbeelding met huidige voortgang">
@@ -10,21 +11,22 @@
                     <i>{{user.aantalChallenges}}/21</i>
                 </uib-progressbar>
             </div>
+        
         </div>
     </div>
+    <div id ="challenge">
     <div class="row">
-        <div class="col-md-5">
-            <div class="thumbnail">
+
+            <div class="thumbnail" ng-click="receptUrl()">
                 <h1>Challenge</h1>
 
                 <h3>{{challenge.titel}}</h3>
                 <p>{{challenge.omschrijving}}</p>
                 <!--<button type="submit" class="btn btn-primary">Volgende challenge</button>-->
-            </div>
-        </div>
+            </div>      
     </div>
-
-    <div class="col-md-5">
+    </div>
+    <div id="recept">
         <div class="thumbnail" ng-click="receptUrl()">
             <h1>Recept van de dag</h1>
             <img id="receptImg" ng-src="http://{{recept.imageUrl}}" alt="tree" title="Foto van recept">

@@ -3,7 +3,7 @@
 angular.module('EVA-Webapp-groep-17')
 .controller('ChallengeCtrl', ['ChallengeService', '$scope',
     function (ChallengeService, $scope) {
-    	$scope.setActive(challenge) = function(challenge){
+    	$scope.setActive = function(challenge){
     		//challenge active zetten, FABRICE
     	}
 
