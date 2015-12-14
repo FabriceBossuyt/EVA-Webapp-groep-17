@@ -13,6 +13,15 @@ angular.module('EVA-Webapp-groep-17')
     	    })
         }
 
+        $scope.challengeDone = function (challenge) {
+            for (var i = 0; i < $rootScope.user.aantalChallenges; i++) {
+                if ($rootScope.user.gedaneChallenges[i] === challenge._id) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         
 
         ChallengeService.getAll().then(
