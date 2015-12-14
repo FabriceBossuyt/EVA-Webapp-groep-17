@@ -125,16 +125,28 @@ h3{
 
 #recept{
 	float: left;
-	height: 450px;
-	width: 450px;
-	margin: 50px;
+	height: 450px ;
+	width: 40%;
+	min-width: 400px;
+	padding-right: 50px;
+	margin:50px;
 }
 
 #challenge{
 	float: left;
 	height: 450px;
-	width: 450px;
+	width: 40%;
+	min-width: 400px;
+	padding-left: 50px;
 	margin: 50px;
+}
+#welkom{
+	width: 100%;
+	padding-left: 20%;
+	padding-right: 20%;
+}
+#welkom h1{
+	text-align: center;
 }
 
 /* Restyling nav */
@@ -158,7 +170,7 @@ nav a:hover{
 .thumbnail{
     border: none !important;
     background-color: transparent !important;
-    min-height: 225px;
+    min-height: 255px;
 }
 
 .caption{
