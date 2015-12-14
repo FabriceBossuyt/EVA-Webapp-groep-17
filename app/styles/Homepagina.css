@@ -60,16 +60,13 @@ background-image: url('../images/bg_pattern_chalkboard.jpg');
 	float: left;
 	height: 150px;
 	width: 150px;
-	padding: 15px;
-
-
+	margin: 15px;
 }
+
 #content h1 {
 	text-align: center;
 	padding: 5px;
-	
 }
-
 
 #voortgangtekst{
 	text-align: center;
@@ -79,52 +76,60 @@ background-image: url('../images/bg_pattern_chalkboard.jpg');
 	float: right;
 	margin: 40px 20px 20px 20px;
 }
+
 #links ul li{
 	float:left;
 	list-style: none;
 	padding-right: 15px;
 }
+
 #links img {
 	height: 55px;
 	width: 55px;
 }
+
 #navbar ul li{
 	float:left;
 	list-style: none;
 	padding-left: 10px;
 	color: #4E4f3E;
-
-
 }
+
 #navbar ul li a{
 	color: #4E4f3E;
 	text-decoration: none;
 	padding: 10px 0px;	
 }
+
 #navbar ul li a:hover{
 	color: #fff;
-
 }
 
 ul{
 	list-style-type: none;
 }
+
 h3{
 	text-align: center;
 }
+
 #receptImg{
 	float: left;
-	height: 250px;
-	width: 250px;
-	padding: 15px;
-
+	height: 150px;
+	width: 150px;
+	margin: 15px;
+    border-style: solid;
+    border-color: dimgrey;
+    border-width: 2px;
 }
+
 #recept{
 	float: left;
 	height: 450px;
 	width: 450px;
 	margin: 50px;
 }
+
 #challenge{
 	float: left;
 	height: 450px;
@@ -135,6 +140,11 @@ h3{
 /* Restyling nav */
 .navbar-brand{
     padding: 10px 0px !important;
+}
+
+.navbar-inverse{
+    border-color: dimgrey !important;
+    border-width: 1px !important;
 }
 
 .evaLogo{
@@ -148,7 +158,7 @@ nav a:hover{
 .thumbnail{
     border: none !important;
     background-color: transparent !important;
-    min-height: 325px;
+    min-height: 225px;
 }
 
 .caption{
