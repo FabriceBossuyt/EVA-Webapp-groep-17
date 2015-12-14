@@ -19,7 +19,7 @@ angular.module('EVA-Webapp-groep-17')
         }
 
         function getById(id) {
-            return $http.get('http://localhost:8080/api/Challenge/' + id).then(handleSuccess, handleError('Error getting user by id'));
+            return $http.get('http://localhost:8080/api/Challenge/' + id);
         }
 
         function create(challenge, callback) {
