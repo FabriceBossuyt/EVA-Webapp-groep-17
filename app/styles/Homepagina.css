@@ -23,10 +23,9 @@ background-image: url('../images/bg_pattern_chalkboard.jpg');
 }
 
 .navbar{
-    background-image: url('../images/bg_pattern_chalkboard.jpg');
+    /*background-image: url('../images/bg_pattern_chalkboard.jpg');*/
+    background-color: #222;
 }
-
-
 
 #menu ul {
 	float: left;
@@ -131,7 +130,16 @@ h3{
 	height: 450px;
 	width: 450px;
 	margin: 50px;
-
-
 }
 
+.navbar-brand{
+    padding: 10px 0px !important;
+}
+
+.evaLogo{
+    padding: 10px !important; 
+}
+
+nav a:hover{
+    cursor: pointer;
+}
