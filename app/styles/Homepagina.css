@@ -132,6 +132,7 @@ h3{
 	margin: 50px;
 }
 
+/* Restyling nav */
 .navbar-brand{
     padding: 10px 0px !important;
 }
@@ -142,4 +143,18 @@ h3{
 
 nav a:hover{
     cursor: pointer;
+}
+
+.thumbnail{
+    border: none !important;
+    background-color: transparent !important;
+    min-height: 325px;
+}
+
+.caption{
+    color: white !important;
+}
+
+.caption h3{
+    text-align: left !important;
 }
