@@ -206,3 +206,43 @@ nav a:hover {
 input {
     color: black;
 }
+
+
+
+#vriendenRow{
+    margin-left: 20% !important;
+    margin-right: 20% !important;
+    margin-bottom: 4% !important;
+}
+
+#profile-picture{
+    min-width: 75px !important;
+    max-width: 75px !important;
+    width: 75px !important;
+    border-style: solid !important;
+    border-color: gray !important;
+    border-width: 2px !important;
+}
+
+.inlinerino{
+    float:left !important; 
+    display:inline !important; 
+    vertical-align: middle !important;
+}
+
+.inlinerino:not(:first-child){
+    margin-left: 2.5%;
+    margin-top: 27.5px;
+}
+
+#vrienden-progress{
+    min-width: 50% !important;
+    max-width: 50% !important;
+    width: 50% !important;
+    margin-left: 10% !important;
+}
+
+#naampje{
+    width: 120px !important;
+    min-wdith: 120px !important;
+}
