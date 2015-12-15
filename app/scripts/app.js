@@ -64,6 +64,11 @@ angular
               templateUrl: 'views/vrienden.html',
               controller: 'VriendenCtrl'
           })
+          .state('profiel', {
+              url: '/profiel', 
+              templateUrl: 'views/profiel.html',
+              controller: 'ProfielCtrl'
+          })
         .state('404', {
             url: '/404',
             templateUrl: '404.html'
