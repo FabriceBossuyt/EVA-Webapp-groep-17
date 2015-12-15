@@ -40,6 +40,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li ng-hide="user.isAuth"><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li ng-show="user.isAuth"><a ui-sref="profiel"><span class="glyphicon glyphicon-user"></span> Profiel</a></li>
                         <li ng-show="user.isAuth" ng-click="logout()"><a><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -89,6 +90,8 @@
     <script src="scripts/controllers/recept.js"></script>
     <script src="scripts/controllers/registreerfb.js"></script>
     <script src="scripts/controllers/vrienden.js"></script>
+    <script src="scripts/controllers/profiel.js"></script>
+
 
 
     <!-- endbuild -->
