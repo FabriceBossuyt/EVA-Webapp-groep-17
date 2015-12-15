@@ -1,13 +1,9 @@
-﻿<div id="content">
-    <div class="row" ng-repeat="vriend in vrienden | orderBy: '-aantalChallenges'">
-        <div >
-            <img id="profile-picture" ng-src="{{vriend.picture.data.url}}">
-        </div>
-        <div class="col-md-1">
-            <p>{{vriend.name}}</p>
-        </div>
-        <div class="col-md-4">
-            <uib-progressbar class="progress-striped active" max="21" value="vriend.aantalChallenges">
+<div id="content">
+    <div id="vriendenRow" class="row" ng-repeat="vriend in vrienden | orderBy: '-aantalChallenges'">
+        <div class"col-md-9">
+            <img class="inlinerino" id="profile-picture" ng-src="{{vriend.picture.data.url}}">
+            <p id="naampje" class="inlinerino">{{vriend.name}}</p>
+            <uib-progressbar id="vrienden-progress" class="progress-striped active inlinerino" max="21" value="vriend.aantalChallenges">
                 <i>{{vriend.aantalChallenges}}/21</i>
             </uib-progressbar>
         </div>
