@@ -8,16 +8,14 @@ angular.module('EVA-Webapp-groep-17')
         vm.registreer = function () {
             vm.dataLoading = true;
 
-            UserService.create(vm.user, function (response) {
-                console.log(response)
-                if (response === 'Gebruiker added') {
-                    vm.dataLoading = false;
-                    $state.go('login');
-                } else {
-                    vm.dataLoading = false;
-                    vm.error = response
-                }
-            })
+            UserService.create(vm.user).then(
+               function (response) {
+                   console.log('user created')
+                   vm.dataLoading = false;
+                   $state.go('register', { 'user': vm.user });
+               }, function (response) {
+                   vm.dataLoading = false;
+                   vm.error = response.data;
+               });
         }
-
     }]);

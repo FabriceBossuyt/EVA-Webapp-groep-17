@@ -6,7 +6,7 @@
     <div ng-show="error" class="alert alert-danger">{{error}}</div>
 </div>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4 col-md-offset-3">
         <form name="form" ng-submit="logIn()" role="form"
               style="margin-top:30px;">
             <h4>Gebruikersnaam</h4>
@@ -22,14 +22,14 @@
         </form>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-5" style="margin-top:30px;">
         <p>Log in via facebook</p>
-        <div class="fb-login-button" data-scope="email, user_friends" data-max-rows="1" data-size="medium" data-show-faces="true" data-auto-logout-link="true"></div>
+        <div class="fb-login-button" data-scope="email, user_friends" data-max-rows="1" data-size="medium" data-show-faces="true" onlogin="fbLogin()"></div>
     </div>
 </div>
 <p></p>
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 col-md-offset-3" style="margin-top:30px;">
         <p>Heeft u nog geen account en wenst u niet in te loggen via facebook?</p>
         <p>Registreer u dan nu!</p>
         <a ng-href="#/registreer"><button class="btn btn-primary">Registreer</button></a>

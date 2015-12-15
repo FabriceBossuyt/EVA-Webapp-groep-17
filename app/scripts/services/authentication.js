@@ -1,8 +1,8 @@
 'use strict'
 
 angular.module('EVA-Webapp-groep-17')
-.factory('AuthenticationService', ['$http', '$q','localStorageService',
-    function ($http, $q, localStorageService) {
+.factory('AuthenticationService', ['$http', '$q', 'localStorageService', '$rootScope', 'UserService',
+    function ($http, $q, localStorageService, $rootScope, UserService) {
 
         var baseUrl = 'http://localhost:8080'
         var service = {},
@@ -13,37 +13,70 @@ angular.module('EVA-Webapp-groep-17')
             role: '',
             aantalDagen: '',
             refreshToken: ''
-        };
+        },
+        fbAuth,
+        fbResponse;
 
         service.init = init;
         service.login = login;
         service.setCredentials = setCredentials;
         service.logout = _logout;
         service.getMe = getMe;
+        service.watchAuthStatusChange = watchAuthStatusChange;
 
         return service;
 
         function init() {
-
-            var authData = localStorageService.get('authData'),
-                defer = $q.defer();
+            var authData = localStorageService.get('authData');
+            console.log(authData)
             if (authData) {
                 _user.token = authData.token;
-                
+
                 getMe().then(
                 function (response) {
                     _user.aantalDagen = response.data.data.aantalDagen;
                     _user.isAuth = true;
-                    defer.resolve(_user)
+                    _user.email = response.data.data.username;
+                    _user.naam = response.data.data.naam;
+                    _user.voornaam = response.data.data.voornaam;
+                    _user.huidigeChallenge = response.data.data.huidigeChallenge;
+                    _user.gedaneChallenges = response.data.data.gedaneChallenges;
+                    _user.aantalChallenges = response.data.data.gedaneChallenges.length;
+                    $rootScope.$emit('user:loggedIn', _user);
                 }, function () {
-                    defer.reject();
+                    $rootScope.$emit('user:loggedOut');
                 });
             } else {
-                defer.reject();
+                console.log(fbAuth)
+                if (fbAuth) {
+                    loginFacebook(fbResponse.accessToken, function (response, user) {
+                        console.log(response)
+                        var token = response.token_type + ' ' + response.access_token;
+                        setCredentials(token);
+                        $rootScope.$emit('user:loggedIn', _user);
+                    });
+                } else {
+                    $rootScope.$emit('user:loggedOut');
+                }
             }
-
-            return defer.promise;
         };
+
+        function watchAuthStatusChange() {
+            return FB.getLoginStatus(function (response) {
+                console.log(response)
+                console.log('fb status got')
+                switch (response.status) {
+                    case 'connected':
+                        fbAuth = true;
+                        fbResponse = response.authResponse;
+                        break;
+                    default:
+                        fbAuth = false;
+                        break;
+                }
+                init();
+            }, true);
+        }
 
         function login(username, password, callback) {
             var headers = {};
@@ -92,12 +125,25 @@ angular.module('EVA-Webapp-groep-17')
         }
 
         function _logout() {
-            localStorageService.remove('authData');
+            if (fbAuth) {
+                fbAuth = false;
+                FB.logout(function (response) {
+                    localStorageService.remove('authData');
 
-            _user.token = '';
-            _user.isAuth = false;
+                    _user.token = '';
+                    _user.isAuth = false;
+                    $rootScope.$emit('user:loggedOut');
+
+                });
+            } else {
+                localStorageService.remove('authData');
+
+                _user.token = '';
+                _user.isAuth = false;
+
+                $rootScope.$emit('user:loggedOut');
+            }
         };
-
 
 
         function setCredentials(token) {
@@ -107,13 +153,19 @@ angular.module('EVA-Webapp-groep-17')
 
             _user.token = token;
             getMe().then(function (response) {
+                _user.aantalDagen = response.data.data.aantalDagen;
                 _user.isAuth = true;
-                _user.email = response.data.data.username
-                _user.aantalDagen = response.data.data.aantalDagen
+                _user.email = response.data.data.username;
+                _user.naam = response.data.data.naam;
+                _user.voornaam = response.data.data.voornaam;
+                _user.huidigeChallenge = response.data.data.huidigeChallenge;
+                _user.gedaneChallenges = response.data.data.gedaneChallenges;
+                _user.aantalChallenges = response.data.data.gedaneChallenges.length;
 
             }, function (err) {
                 console.log(err);
             });
+
         }
 
         function getMe() {
@@ -127,4 +179,5 @@ angular.module('EVA-Webapp-groep-17')
                 headers: header
             });
         }
+
     }]);

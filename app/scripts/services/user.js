@@ -1,16 +1,20 @@
 'use strict'
 
 angular.module('EVA-Webapp-groep-17')
-.factory('UserService', ['$http', 
-    function ($http) {
+.factory('UserService', ['$http', 'localStorageService',
+    function ($http, localStorageService) {
 
-        var service = {};
+        var service = {},
+            baseUrl = 'http://localhost:8080/api/';
 
         service.getAll = getAll;
         service.getById = getById;
         service.create = create;
         service.update = update;
         service.delete = remove;
+        service.getGebruikerByfacebookId = getUserByFacebookId;
+        service.getByUsername = getByUsername;
+        service.putMe = putMe;
 
         return service;
 
@@ -22,25 +26,44 @@ angular.module('EVA-Webapp-groep-17')
             return $http.get('/api/gebruikers/' + id).then(handleSuccess, handleError('Error getting user by id'));
         }
 
-        function create(user, callback) {
-            $http.post('http://localhost:8080/api/gebruikers', user)
-            .success(function (response) {
-                callback(response);
-            }).error(function (response) {
-                callback(response);
+        function create(user) {
+            return $http.post(baseUrl + 'gebruikers', user);
+        }
+
+        function getByUsername(username) {
+            return $http.get(baseUrl + 'gebruikerByUsername/' + username)
+        }
+
+        function getUserByFacebookId(fbId) {
+            return $http.get(baseUrl + 'gebruikerByFacebookId/' + fbId);
+        };
+
+        function update(user) {
+            return $http.put(baseUrl + 'gebruikers/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
+        }
+
+        function putMe(user) {
+            console.log(user)
+            var header = {};
+            header.Authorization = localStorageService.get('authData').token;
+            header['Content-Type'] = 'application/x-www-form-urlencoded';
+
+            return $http({
+                method: 'PUT',
+                url: baseUrl + 'me/',
+                headers: header,
+                data: user,
+                transformRequest: function (obj) {
+                    var str = [];
+                    for (var p in obj)
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                    return str.join("&");
+                }
             });
         }
 
-        function createFacebook(user, callback) {
-
-        }
-
-        function update(user) {
-            return $http.put('/api/gebruikers/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
-        }
-
         function remove(id) {
-            return $http.delete('/api/gebruikers/' + id).then(handleSuccess, handleError('Error deleting user'));
+            return $http.delete(baseUrl +  'gebruikers/' + id).then(handleSuccess, handleError('Error deleting user'));
         }
 
         // private functions

@@ -19,21 +19,20 @@ angular
     'ngMaterial',
     'LocalStorageModule',
     'ui.bootstrap',
-    'angularModalService',
     'ui.router'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
       $urlRouterProvider.otherwise('/home');
 
-      $stateProvider      
+      $stateProvider
         .state('home', {
             url: '/home',
             templateUrl: 'views/homepagina.html',
             controller: 'HomeCtrl'
         })
         .state('login', {
-            url:'/login', 
+            url: '/login',
             templateUrl: 'views/login.html',
             controller: 'LoginCtrl'
         })
@@ -53,30 +52,38 @@ angular
             templateUrl: 'views/recepten.html',
             controller: 'ReceptCtrl'
         })
-          .state('register', {
-              url:'/register',
-              templateurl: 'views/registreerfb.html',
-              controller: 'RegistreerCtrl'
+        .state('register', {
+            url: '/register',
+            params: { 'user': null },
+            templateUrl: 'views/registreerfb.html',
+            controller: 'RegistreerFBCtrl',
+            controllerAs: 'vm'
+        })
+          .state('vrienden', {
+              url: '/vrienden',
+              templateUrl: 'views/vrienden.html',
+              controller: 'VriendenCtrl'
           })
         .state('404', {
             url: '/404',
             templateUrl: '404.html'
-        })      
+        })
   })
 
-.run(function($rootScope){
-        window.fbAsyncInit = function () {
+.run(function ($rootScope, AuthenticationService) {
+    window.fbAsyncInit = function () {
         FB.init({
-            appId:'1519833821647286',
-            status:true,
-            cookie:true,
+            appId: '1519833821647286',
+            status: true,
+            cookie: true,
             xfbml: true,
             channel: '../channel.html',
             version: 'v2.4'
         });
+        AuthenticationService.watchAuthStatusChange();
     };
 
-        (function (d) {
+    (function (d) {
         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
         if (d.getElementById(id)) {
             return;
@@ -84,7 +91,7 @@ angular
         js = d.createElement('script');
         js.id = id;
         js.async = true;
-        js.src = "//connect.facebook.net/nl_BE/all.js";
+        js.src = "//connect.facebook.net/nl_BE/sdk.js";
         ref.parentNode.insertBefore(js, ref);
     }(document));
 })
