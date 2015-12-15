@@ -38,4 +38,5 @@ angular.module('EVA-Webapp-groep-17')
             $window.open('http://' + $scope.recept.receptUrl, '_blank');
         }
 
+
     }]);

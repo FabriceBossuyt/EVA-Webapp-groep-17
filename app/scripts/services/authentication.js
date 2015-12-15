@@ -42,6 +42,9 @@ angular.module('EVA-Webapp-groep-17')
                     _user.huidigeChallenge = response.data.data.huidigeChallenge;
                     _user.gedaneChallenges = response.data.data.gedaneChallenges;
                     _user.aantalChallenges = response.data.data.gedaneChallenges.length;
+                    if (response.data.data.facebookId) {
+                        _user.facebookId = true;
+                    }
                     $rootScope.$emit('user:loggedIn', _user);
                 }, function () {
                     $rootScope.$emit('user:loggedOut');
@@ -161,6 +164,9 @@ angular.module('EVA-Webapp-groep-17')
                 _user.huidigeChallenge = response.data.data.huidigeChallenge;
                 _user.gedaneChallenges = response.data.data.gedaneChallenges;
                 _user.aantalChallenges = response.data.data.gedaneChallenges.length;
+                if (response.data.data.facebookId) {
+                    _user.facebookId = true;
+                }
 
             }, function (err) {
                 console.log(err);
@@ -179,5 +185,7 @@ angular.module('EVA-Webapp-groep-17')
                 headers: header
             });
         }
+
+
 
     }]);
