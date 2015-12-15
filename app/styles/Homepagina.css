@@ -1,200 +1,208 @@
 body {
-background-image: url('../images/bg_pattern_chalkboard.jpg');
-
-
+    background-image: url('../images/bg_pattern_chalkboard.jpg');
 }
 
-#wrapper{
-	color:white;
-	font-family: "Museo";
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	margin: 0 auto;
-	padding: 10px;
+#wrapper {
+    color: white;
+    font-family: "Museo";
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 10px;
 }
+
 #header {
-	width: 100%;
-	height: 100px;
+    width: 100%;
+    height: 100px;
 }
+
 #logo {
-	float: left;
-	margin: 20px 20px 20px 20px;
-
+    float: left;
+    margin: 20px 20px 20px 20px;
 }
 
-.navbar{
+.navbar {
     /*background-image: url('../images/bg_pattern_chalkboard.jpg');*/
     background-color: #222;
 }
 
 #menu ul {
-	float: left;
-	height: auto;
-	width: 200px;
-}
-#menu ul li{
-	list-style: none;
-	padding: 5px;
-	text-align: center;
-}
-#menu ul li a {
-	color: #4E4f3E;
-	text-decoration: none;
-	padding: 10px 0px;
-	display : block;
-
-}
-#menu ul li a:hover{
-	color: #fff;
-
+    float: left;
+    height: auto;
+    width: 200px;
 }
 
-#content{
-	float: left;
-	width: 100%;
-	height: 100%;
-	
+    #menu ul li {
+        list-style: none;
+        padding: 5px;
+        text-align: center;
+    }
+
+        #menu ul li a {
+            color: #4E4f3E;
+            text-decoration: none;
+            padding: 10px 0px;
+            display: block;
+        }
+
+            #menu ul li a:hover {
+                color: #fff;
+            }
+
+#content {
+    float: left;
+    width: 100%;
+    height: 100%;
 }
-#boom{
-	float: left;
-	height: 150px;
-	width: 150px;
-	margin: 15px;
+
+#boom {
+    float: left;
+    height: 150px;
+    width: 150px;
+    margin: 15px;
 }
 
 #content h1 {
-	padding: 5px;
+    padding: 5px;
 }
 
-#voortgangtekst{
-	text-align: center;
+#voortgangtekst {
+    text-align: center;
 }
 
-#links{
-	float: right;
-	margin: 40px 20px 20px 20px;
+#links {
+    float: right;
+    margin: 40px 20px 20px 20px;
 }
 
-#links ul li{
-	float:left;
-	list-style: none;
-	padding-right: 15px;
+    #links ul li {
+        float: left;
+        list-style: none;
+        padding-right: 15px;
+    }
+
+    #links img {
+        height: 55px;
+        width: 55px;
+    }
+
+#navbar ul li {
+    float: left;
+    list-style: none;
+    padding-left: 10px;
+    color: #4E4f3E;
 }
 
-#links img {
-	height: 55px;
-	width: 55px;
-}
+    #navbar ul li a {
+        color: #4E4f3E;
+        text-decoration: none;
+        padding: 10px 0px;
+    }
 
-#navbar ul li{
-	float:left;
-	list-style: none;
-	padding-left: 10px;
-	color: #4E4f3E;
-}
+        #navbar ul li a:hover {
+            color: #fff;
+        }
 
-#navbar ul li a{
-	color: #4E4f3E;
-	text-decoration: none;
-	padding: 10px 0px;	
-}
-
-#navbar ul li a:hover{
-	color: #fff;
-}
-
-ul{
-	list-style-type: none;
+ul {
+    list-style-type: none;
 }
 
 
 
-#receptImg{
-	float: left;
-	height: 150px;
-	width: 150px;
-	margin: 15px;
+#receptImg {
+    float: left;
+    height: 150px;
+    width: 150px;
+    margin: 15px;
     border-style: solid;
     border-color: dimgrey;
     border-width: 2px;
 }
 
-#recept{
-	float: left;
-	height: 450px ;
-	width: 40%;
-	min-width: 400px;
-	padding-right: 50px;
-	margin:50px;
+#recept {
+    float: left;
+    height: 450px;
+    width: 40%;
+    min-width: 400px;
+    padding-right: 50px;
+    margin: 50px;
 }
 
-#challenge{
-	float: left;
-	height: 450px;
-	width: 40%;
-	min-width: 400px;
-	padding-left: 50px;
-	margin: 50px;
+#challenge {
+    float: left;
+    height: 450px;
+    width: 40%;
+    min-width: 400px;
+    padding-left: 50px;
+    margin: 50px;
 }
-#welkom{
-	width: 100%;
-	padding-left: 20%;
-	padding-right: 20%;
+
+#welkom {
+    width: 100%;
+    padding-left: 20%;
+    padding-right: 20%;
 }
-#welkom h1{
-	text-align: center;
-}
+
+    #welkom h1 {
+        text-align: center;
+    }
 
 /* Restyling nav */
-.navbar-brand{
+.navbar-brand {
     padding: 10px 0px !important;
 }
 
-.navbar-inverse{
+.navbar-inverse {
     border-color: dimgrey !important;
     border-width: 1px !important;
 }
 
-.evaLogo{
-    padding: 10px !important; 
+.evaLogo {
+    padding: 10px !important;
 }
 
-nav a:hover{
+nav a:hover {
     cursor: pointer;
 }
 
-.thumbnail{
+.thumbnail {
     border: none !important;
     background-color: transparent !important;
     min-height: 255px;
 }
 
-.caption{
+.caption {
     color: white !important;
 }
 
-.caption h3{
-    text-align: left !important;
-}
-.page-header h1{
-	text-align: center;
-	color: white;
+    .caption h3 {
+        text-align: left !important;
+    }
+
+.page-header h1 {
+    text-align: center;
+    color: white;
 }
 
-.form-group input{
- 	-moz-border-radius: 15px;
- 	border-radius: 15px;
-    border:solid 1px black;
-    padding:5px;
-
+.form-group input {
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    border: solid 1px black;
+    padding: 5px;
 }
-.rheader{
-	text-align: center;
-	color: white;
 
+.rheader {
+    text-align: center;
+    color: white;
 }
-#moeilijkheidsgraad{
-	width: 30px;
-	height: 30px;
+
+#moeilijkheidsgraad {
+    width: 30px;
+    height: 30px;
+}
+
+
+input {
+    color: black;
 }

@@ -7,22 +7,23 @@ angular.module('EVA-Webapp-groep-17')
 
         vm.registreer = function () {
             vm.dataLoading = true;
+            console.log($stateParams.user)
             if ($stateParams.user.facebookId) {
-                console.log(vm.user)
-                UserService.create(vm.user, function (response) {
-                    if (response === 'Gebruiker added') {
-                        vm.dataLoading = false;
-                        AuthenticationService.watchAuthStatusChange();
-                        $state.go('home');
-                    } else {
-                        vm.dataLoading = false;
-                        vm.error = response;
-                    }
-                })
+                UserService.create(vm.user).then(function (response) {
+                    console.log('created')
+                    vm.dataLoading = false;
+                    AuthenticationService.watchAuthStatusChange();
+                    $state.go('home');
+                }, function (response) {
+                    vm.dataLoading = false;
+                    vm.error = response.data;
+                });
             } else {
+                console.log('no fb id')
                 UserService.getByUsername($stateParams.user.email).then(function (response) {
                     vm.user.id = response.data.data._id
                     UserService.update(vm.user).then(function (response) {
+                        console.log('user updated')
                         vm.dataLoading = false;
                         $state.go('login');
                     })

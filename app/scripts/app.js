@@ -59,6 +59,11 @@ angular
             controller: 'RegistreerFBCtrl',
             controllerAs: 'vm'
         })
+          .state('vrienden', {
+              url: '/vrienden',
+              templateUrl: 'views/vrienden.html',
+              controller: 'VriendenCtrl'
+          })
         .state('404', {
             url: '/404',
             templateUrl: '404.html'

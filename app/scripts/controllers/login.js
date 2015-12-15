@@ -28,6 +28,7 @@ angular.module('EVA-Webapp-groep-17')
                     AuthenticationService.watchAuthStatusChange();
                     $state.go('home');
                 }, function () {
+                    console.log('user not exists')
                     $state.go('register', { 'user': { 'email': response.email, 'voornaam': response.first_name, 'naam': response.last_name, 'facebookId': response.id, 'password': ' ' } });
                 });
             });

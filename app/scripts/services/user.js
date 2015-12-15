@@ -26,13 +26,8 @@ angular.module('EVA-Webapp-groep-17')
             return $http.get('/api/gebruikers/' + id).then(handleSuccess, handleError('Error getting user by id'));
         }
 
-        function create(user, callback) {
-            $http.post(baseUrl + 'gebruikers', user)
-            .success(function (response) {
-                callback(response);
-            }).error(function (response) {
-                callback(response);
-            });
+        function create(user) {
+            return $http.post(baseUrl + 'gebruikers', user);
         }
 
         function getByUsername(username) {
