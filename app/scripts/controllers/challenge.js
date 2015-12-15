@@ -11,6 +11,13 @@ angular.module('EVA-Webapp-groep-17')
             UserService.putMe(user).then(function (response) {
                 $state.go('home');
     	    })
+            FB.ui({
+            method: 'feed',
+            name: $rootScope.user.voornaam + ' heeft een nieuwe EVA-Challenge gestart: '+ challenge.titel,
+            link: 'https://evavzw.be',
+            description: challenge.omschrijving,
+            caption: 'Project EVA',
+            }, function(response){});
         }
 
         $scope.challengeDone = function (challenge) {

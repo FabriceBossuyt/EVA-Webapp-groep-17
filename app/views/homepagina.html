@@ -20,12 +20,11 @@
             <div class="thumbnail">
                 <h1>Challenge</h1>
 
-                <h3>{{challenge.titel}}</h3>
-                <p>{{challenge.omschrijving}}</p>
+                <h3 ng-show="active">{{challenge.titel}}</h3>
+                <p ng-show="active">{{challenge.omschrijving}}</p>
                 <label class="btn btn-primary" ng-click="voltooiChallenge(challenge)" ng-show="active">Voltooi deze challenge</label>
                 <a ui-sref="challenges"><label class="btn btn-primary" ng-click="startChallenge" ng-hide="active">Kies een challenge</label></a>
-                
-                <!--<button type="submit" class="btn btn-primary">Volgende challenge</button>-->
+                <label class="btn btn-primary" ng-click="postFeed()" ng-show="active">share</label>
             </div>      
     </div>
     </div>

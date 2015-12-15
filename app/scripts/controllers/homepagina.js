@@ -11,10 +11,9 @@ angular.module('EVA-Webapp-groep-17')
         });
 
         $rootScope.$watch('user', function () {
-            console.log('bla')
             if ($rootScope.user.huidigeChallenge) {
                 ChallengeService.getById($rootScope.user.huidigeChallenge).then(function (response) {
-                    $scope.challenge = response.data.data;
+                    $rootScope.challenge = response.data.data;
                     $rootScope.active = true;
                 })
             }
@@ -32,6 +31,15 @@ angular.module('EVA-Webapp-groep-17')
                 $rootScope.user.aantalChallenges = response.data.gebruiker.gedaneChallenges.length;
                 $state.reload();
             })
+        }
+        $scope.postFeed = function () {
+            FB.ui({
+            method: 'feed',
+            name: $rootScope.user.voornaam + ' heeft een nieuwe EVA-Challenge gestart: '+ $rootScope.challenge.titel,
+            link: 'https://evavzw.be',
+            description: $rootScope.challenge.omschrijving,
+            caption: 'Project EVA',
+            }, function(response){});
         }
 
         $scope.receptUrl = function () {
