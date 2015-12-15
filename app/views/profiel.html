@@ -1,6 +1,6 @@
 ﻿<div id="content">
     <img id="profile-picture" ng-src="{{picture}}">
-    <form name="form" ng-submit="vm.registreer()" role="form" class="form-horizontal">
+    <form name="form" ng-submit="update()" role="form" class="form-horizontal">
             <div class="row">
                 <div class="form-group form-inline" ng-class="{ 'has-error': form.voornaam.$dirty && form.voornaam.$error.required }">
                     <div class="col-md-1 col-md-offset-5">
@@ -30,34 +30,19 @@
                         <span ng-show="form.email.$dirty && form.email.$error.email" class="help-block">E-mail is niet correct</span>
                     </div>
                 </div>
-                <div class="form-group form-inline" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
-                    <div class="col-md-1 col-md-offset-5">
-                        <label for="password">Wachtwoord</label>
-                    </div>
-                    <div class="col-md-2">
-                        <input ng-readonly="!checked" type="password" name="password" id="Text1" class="form-control" ng-model="userProfiel.password" required />
-                        <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Wachtwoord is verplicht</span>
-                    </div>
-                </div>
-                <div class="form-group form-inline" ng-class="{ 'has-error': form.passwordconfirm.$dirty && form.passwordconfirm.$error.required || form.passwordconfirm.$error.compareTo}">
-                    <div class="col-md-1 col-md-offset-5">
-                        <label for="passwordconfirm">Bevestiging wachtwoord</label>
-                    </div>
-                    <div class="col-md-2">
-                        <input ng-readonly="!checked" type="password" name="passwordconfirm" id="Text1" class="form-control" ng-model="userProfiel.confirmpassword" required compare-to="userProfiel.password" />
-                        <span ng-show="form.passwordconfirm.$dirty && form.passwordconfirm.$error.compareTo || form.passwordconfirm.$error.required" class="help-block">Wachtwoorden komen niet overeen</span>
-                    </div>
-                </div>
             </div>
+           
+
 
         <div class="row">
             <div class="col-md-3 col-md-offset-5">
                 <div class="form-actions">
-                    <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Opslaan</button>
-                    <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                    <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-primary">Opslaan</button>
+                    <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                     <a ng-click="reload()" class="btn btn-link">Annuleer</a>
                 </div>
             </div>
         </div>
     </form>
-</div>
+    <button ng-click="setChecked()" class="btn btn-primary">Aanpassen </button>
+</div> 

@@ -1,8 +1,8 @@
 ﻿'use strict'
 
 angular.module('EVA-Webapp-groep-17')
-.controller('ProfielCtrl', ['AuthenticationService', '$scope', '$rootScope', '$state',
-    function (AuthenticationService, $scope, $rootScope, $state) {
+.controller('ProfielCtrl', ['AuthenticationService', '$scope', '$rootScope', '$state', 'UserService', 
+    function (AuthenticationService, $scope, $rootScope, $state, UserService) {
 
         AuthenticationService.getMe().then(function (response) {
             $scope.userProfiel = response.data.data;
@@ -14,7 +14,6 @@ angular.module('EVA-Webapp-groep-17')
         }
 
         if ($rootScope.user.facebookId) {
-            console.log('facebook')
             FB.api('/me', { fields: 'picture' }, function (response) {
                 $scope.$apply(function () {
                     $scope.picture = response.picture.data.url
@@ -23,6 +22,17 @@ angular.module('EVA-Webapp-groep-17')
         }
         else {
             $scope.picture = '../../images/profiel-foto.jpg';
+        }
+
+        $scope.setChecked = function(){
+            $scope.checked = true;
+        }
+
+        $scope.update = function(){
+            UserService.putMe($scope.userProfiel).then(function(response){
+                console.log(response)
+                $state.reload();
+            })
         }
 
 
